@@ -23,4 +23,6 @@ public interface AbsenceController {
   @PostMapping
   ResponseEntity<Map<String, Object>> create(@RequestBody Absence absence);
 
+  
+
 }

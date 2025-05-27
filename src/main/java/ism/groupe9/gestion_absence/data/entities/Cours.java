@@ -16,5 +16,6 @@ public class Cours {
   private String id;
   private Module module;
   private String classeId;
+  private Salle salle;
   
 }
