@@ -1,8 +1,8 @@
 package ism.groupe9.gestion_absence.data.enums;
 
 public enum Module {
-  INFO,
-  MATH,
+  MATHS_APPLIQUEES,
+  ALGO,
   PHYSIQUE,
   CHIMIE,
   BIOLOGIE,

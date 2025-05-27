@@ -25,7 +25,7 @@ public class EtudiantControllerImpl implements EtudiantController {
   }
 
   @Override
-  public ResponseEntity<Map<String, Object>> getById(String id) {
+  public ResponseEntity<Map<String, Object>> getByMatricule(String matricule) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getById'");
   }
