@@ -1,21 +1,21 @@
-package ism.groupe9.gestion_absence.data.entities;
+// package ism.groupe9.gestion_absence.data.entities;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+// import org.springframework.data.annotation.Id;
+// import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Getter;
-import lombok.Setter;
+// import lombok.Getter;
+// import lombok.Setter;
 
-@Getter
-@Setter
+// @Getter
+// @Setter
 
-@Document
-public class Justification {
+// // @Document
+// public class Justification {
   
-  @Id
-  private String id;
-  private String etudiantId;
-  private String date;
-  private String justificatif;
-  private boolean validation;
-}
+//   @Id
+//   private String id;
+//   private String etudiantId;
+//   private String date;
+//   private String justificatif;
+//   private String validation;
+// }
