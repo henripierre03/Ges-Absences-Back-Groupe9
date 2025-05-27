@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 
 @Document
-public class Utilisateur {
+public class User {
 
   @Id
   private String id;
