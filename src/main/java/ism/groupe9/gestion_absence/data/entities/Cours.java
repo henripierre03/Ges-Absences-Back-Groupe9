@@ -2,7 +2,6 @@ package ism.groupe9.gestion_absence.data.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +10,11 @@ import lombok.Setter;
 @Setter
 
 @Document
-public class Etudiant extends User {
+public class Cours {
 
-  private String matricule;
+  @Id
+  private String id;
+  private Module module;
+  private String classeId;
+  
 }

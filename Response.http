@@ -1,0 +1,14 @@
+GET http://localhost:8080/api/etudiant
+
+###
+POST http://localhost:8080/api/etudiant
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nom": "Test",
+  "prenom": "User",
+  "email": "test@example.com",
+  "password": "password123",
+  "role": "ADMIN"
+}
