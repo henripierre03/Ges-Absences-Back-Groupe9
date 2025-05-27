@@ -1,4 +1,4 @@
-package ism.groupe10.gestion_absence;
+package ism.groupe9.gestion_absence;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

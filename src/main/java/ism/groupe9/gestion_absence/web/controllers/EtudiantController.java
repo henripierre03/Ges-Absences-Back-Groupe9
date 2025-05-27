@@ -1,4 +1,4 @@
-package ism.groupe10.gestion_absence.web.controllers;
+package ism.groupe9.gestion_absence.web.controllers;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ism.groupe10.gestion_absence.data.entities.Etudiant;
+import ism.groupe9.gestion_absence.data.entities.Etudiant;
 
 @RequestMapping("/api/etudiant")
 public interface EtudiantController {

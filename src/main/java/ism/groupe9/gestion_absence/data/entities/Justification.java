@@ -1,5 +1,4 @@
-package ism.groupe10.gestion_absence.data.entities;
-
+package ism.groupe9.gestion_absence.data.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,13 +10,12 @@ import lombok.Setter;
 @Setter
 
 @Document
-public class Utilisateur {
-
+public class Justification {
+  
   @Id
   private String id;
-  private String nom;
-  private String prenom;
-  private String email;
-  private String password;
-  private String role;
+  private String etudiantId;
+  private String date;
+  private String justificatif;
+  private String validation;
 }
