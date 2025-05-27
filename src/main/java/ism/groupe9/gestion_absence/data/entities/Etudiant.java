@@ -1,17 +1,17 @@
-// package ism.groupe9.gestion_absence.data.entities;
+package ism.groupe9.gestion_absence.data.entities;
 
-// import org.springframework.data.annotation.Id;
-// import org.springframework.data.mongodb.core.mapping.Document;
-// import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-// import lombok.Getter;
-// import lombok.Setter;
+import lombok.Getter;
+import lombok.Setter;
 
-// @Getter
-// @Setter
+@Getter
+@Setter
 
-// // @Document
-// public class Etudiant extends User {
+// @Document
+public class Etudiant extends User {
 
 
-// }
+}
