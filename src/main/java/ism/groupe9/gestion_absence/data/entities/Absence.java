@@ -19,7 +19,7 @@ public class Absence {
   private String id;
   private String etudiantId;
   private LocalDateTime date;
-  private TypeAbsence absence;
+  private TypeAbsence typeAbsence;
   private String justificationId;
   private String courId;
 }

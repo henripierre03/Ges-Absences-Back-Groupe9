@@ -1,11 +1,6 @@
-package ism.groupe9.gestion_absence.data.entities;
+package ism.groupe9.gestion_absence.web.dto.response;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import ism.groupe9.gestion_absence.data.entities.Cours;
 import ism.groupe9.gestion_absence.data.enums.Filiere;
 import ism.groupe9.gestion_absence.data.enums.Niveau;
 import ism.groupe9.gestion_absence.data.enums.UserRole;
@@ -15,10 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Document
-public class Etudiant extends User {
+public class EtudiantAllResponse {
 
-  @Id
   private String id;
   private String nom;
   private String prenom;
@@ -26,14 +19,7 @@ public class Etudiant extends User {
   private String password;
   private UserRole role;
   private Filiere filiere;
-  private String matricule;
   private Niveau niveau;
   private String classeId;
-  private List<Absence> absences = new ArrayList<>();
-
-  public void addAbsence(Absence absence) {
-
-    this.absences.add(absence);
-  }
 
 }

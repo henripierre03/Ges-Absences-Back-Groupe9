@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.dto.response.web;
+package ism.groupe9.gestion_absence.web.dto.response;
 
 import ism.groupe9.gestion_absence.data.enums.UserRole;
 import lombok.Getter;
@@ -15,6 +15,6 @@ public class EtudiantAndAbsenceResponse {
   private String email;
   private String password;
   private UserRole role;
-  private AbsenceSimpleResponse absence;
+  private String absenceId;
 
 }
