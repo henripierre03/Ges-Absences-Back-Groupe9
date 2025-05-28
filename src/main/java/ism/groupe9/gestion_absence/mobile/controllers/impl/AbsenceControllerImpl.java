@@ -1,5 +1,6 @@
 package ism.groupe9.gestion_absence.mobile.controllers.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,4 @@ public class AbsenceControllerImpl implements AbsenceController {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getByCourId'");
   }
-
 }
