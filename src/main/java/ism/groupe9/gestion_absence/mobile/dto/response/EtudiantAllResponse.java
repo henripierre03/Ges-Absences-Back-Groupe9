@@ -23,6 +23,6 @@ public class EtudiantAllResponse {
   private UserRole role;
   private Filiere filiere;
   private Niveau niveau;
-  private List<AbsenceSimpleResponse> absences;
+  private List<AbsenceOnlyResponse> absences;
 
 }

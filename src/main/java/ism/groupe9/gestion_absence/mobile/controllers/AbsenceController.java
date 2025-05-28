@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.data.entities.Absence;
+import ism.groupe9.gestion_absence.mobile.dto.request.AbsenceCreateRequest;
 
 @RequestMapping("/api/absence")
 public interface AbsenceController {
@@ -27,7 +28,7 @@ public interface AbsenceController {
   @ApiResponse(responseCode = "201", description = "Absence créée avec succès.")
   @ApiResponse(responseCode = "400", description = "Requête invalide, les données fournies ne sont pas valides.")
   @ApiResponse(responseCode = "409", description = "Conflit, l'absence existe déjà.")
-  ResponseEntity<Map<String, Object>> create(@RequestBody Absence absenceRequest);
+  ResponseEntity<Map<String, Object>> create(@RequestBody AbsenceCreateRequest absenceRequest);
 
   @GetMapping("/cour/{id}")
   @Operation(summary = "Recuperer les absences d'un cours", description = "Cette méthode permet de récupérer les absences associées à un cours spécifique.")
