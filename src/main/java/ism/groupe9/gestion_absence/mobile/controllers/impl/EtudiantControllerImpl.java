@@ -6,9 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import ism.groupe9.gestion_absence.data.entities.Etudiant;
 import ism.groupe9.gestion_absence.services.EtudiantService;
-import ism.groupe9.gestion_absence.web.controllers.EtudiantController;
+import ism.groupe9.gestion_absence.mobile.controllers.EtudiantController;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -25,33 +24,18 @@ public class EtudiantControllerImpl implements EtudiantController {
   }
 
   @Override
-  public ResponseEntity<Map<String, Object>> getByEtudiant(String matricule) {
+  public ResponseEntity<Map<String, Object>> getByMatricule(String matricule) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getById'");
   }
 
-  @Override
-  public ResponseEntity<Map<String, Object>> create(Etudiant etudiant) {
-    var response = etudiantService.save(etudiant);
-    return new ResponseEntity<>(RestResponse.response(HttpStatus.CREATED, response, "Etudiant"), HttpStatus.CREATED);
+
   }
 
-  @Override
-  public ResponseEntity<Map<String, Object>> update(String id, Etudiant etudiant) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
-  }
 
-  @Override
-  public ResponseEntity<Map<String, Object>> delete(String id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
-  }
+  // @Override
+  // public ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(String matricule) {
+  //   // TODO Auto-generated method stub
+  //   throw new UnsupportedOperationException("Unimplemented method 'getAbsencesByMatricule'");
+  // }
 
-  @Override
-  public ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(String matricule) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getAbsencesByMatricule'");
-  }
-
-}
