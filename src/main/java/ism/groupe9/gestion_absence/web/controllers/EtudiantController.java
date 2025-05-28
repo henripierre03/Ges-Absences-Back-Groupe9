@@ -20,7 +20,7 @@ public interface EtudiantController {
   ResponseEntity<Map<String, Object>> getAll();
 
   @GetMapping("/{matricule}")
-  ResponseEntity<Map<String, Object>> getByMatricule(@PathVariable String matricule);
+  ResponseEntity<Map<String, Object>> getByEtudiant(@PathVariable String matricule);
 
   @PostMapping
   ResponseEntity<Map<String, Object>> create(@RequestBody Etudiant etudiant);
@@ -30,5 +30,8 @@ public interface EtudiantController {
 
   @DeleteMapping("/{id}")
   ResponseEntity<Map<String, Object>> delete(@PathVariable String id);
+
+  @GetMapping("/absence/{matricule}")
+  ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(@PathVariable String matricule);
   
 }

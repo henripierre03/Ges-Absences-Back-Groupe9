@@ -34,7 +34,7 @@ public class AbsenceMock implements CommandLineRunner {
           Absence absence = new Absence();
           absence.setEtudiantId(etudiant.getId());
           absence.setDate(new Date());
-          absence.setJustification(null);
+          absence.setJustificationId(null);
           etudiant.addAbsence(absence);
           absences.add(absence);
         

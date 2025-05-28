@@ -25,7 +25,7 @@ public class EtudiantControllerImpl implements EtudiantController {
   }
 
   @Override
-  public ResponseEntity<Map<String, Object>> getByMatricule(String matricule) {
+  public ResponseEntity<Map<String, Object>> getByEtudiant(String matricule) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getById'");
   }
@@ -46,6 +46,12 @@ public class EtudiantControllerImpl implements EtudiantController {
   public ResponseEntity<Map<String, Object>> delete(String id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'delete'");
+  }
+
+  @Override
+  public ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(String matricule) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getAbsencesByMatricule'");
   }
 
 }

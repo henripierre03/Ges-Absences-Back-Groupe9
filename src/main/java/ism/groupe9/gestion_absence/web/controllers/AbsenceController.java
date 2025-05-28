@@ -17,11 +17,8 @@ public interface AbsenceController {
   @GetMapping("")
   ResponseEntity<Map<String, Object>> getAll();
 
-  @GetMapping("/{id}")
-  ResponseEntity<Map<String, Object>> getByEtudiant(@PathVariable String matricule);
-
   @PostMapping
-  ResponseEntity<Map<String, Object>> create(@RequestBody Absence absence);
+  ResponseEntity<Map<String, Object>> create(@RequestBody Absence absenceRequest);
 
   @GetMapping("/cour/{id}")
   ResponseEntity<Map<String, Object>> getByCourId(@PathVariable String id);
