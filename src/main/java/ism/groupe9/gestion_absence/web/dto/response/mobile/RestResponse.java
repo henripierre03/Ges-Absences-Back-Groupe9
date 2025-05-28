@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.dto.response;
+package ism.groupe9.gestion_absence.web.dto.response.mobile;
 
 import java.util.HashMap;
 import java.util.List;

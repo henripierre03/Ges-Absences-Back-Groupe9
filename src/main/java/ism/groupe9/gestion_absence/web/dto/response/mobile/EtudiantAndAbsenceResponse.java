@@ -1,7 +1,4 @@
-package ism.groupe9.gestion_absence.data.entities;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package ism.groupe9.gestion_absence.web.dto.response.mobile;
 
 import ism.groupe9.gestion_absence.data.enums.UserRole;
 import lombok.Getter;
@@ -10,13 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Document
-public class Vigile extends User {
-  @Id
+public class EtudiantAndAbsenceResponse {
+
   private String id;
   private String nom;
   private String prenom;
   private String email;
   private String password;
   private UserRole role;
+  private AbsenceSimpleResponse absence;
+
 }
