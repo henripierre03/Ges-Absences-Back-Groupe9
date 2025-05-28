@@ -15,12 +15,12 @@ import ism.groupe9.gestion_absence.data.entities.Etudiant;
 
 @RequestMapping("/api/etudiant")
 public interface EtudiantController {
-  
+
   @GetMapping("")
   ResponseEntity<Map<String, Object>> getAll();
 
-  @GetMapping("/{id}")
-  ResponseEntity<Map<String, Object>> getById(@PathVariable String id);
+  @GetMapping("/{matricule}")
+  ResponseEntity<Map<String, Object>> getByEtudiant(@PathVariable String matricule);
 
   @PostMapping
   ResponseEntity<Map<String, Object>> create(@RequestBody Etudiant etudiant);
@@ -30,4 +30,8 @@ public interface EtudiantController {
 
   @DeleteMapping("/{id}")
   ResponseEntity<Map<String, Object>> delete(@PathVariable String id);
+
+  @GetMapping("/absence/{matricule}")
+  ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(@PathVariable String matricule);
+  
 }

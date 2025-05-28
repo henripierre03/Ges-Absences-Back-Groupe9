@@ -1,5 +1,7 @@
 package ism.groupe9.gestion_absence.data.entities;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +17,7 @@ public class Cours {
   @Id
   private String id;
   private Module module;
-  private String classeId;
-  
+  private List<DetailCour> detailCours;
+  private String salleId;
+
 }
