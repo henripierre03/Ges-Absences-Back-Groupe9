@@ -1,6 +1,6 @@
 package ism.groupe9.gestion_absence.data.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,12 +12,14 @@ import lombok.Setter;
 @Setter
 
 @Document
-public class Justification {
-  
+public class DetailCour {
+
   @Id
   private String id;
-  private String etudiantId;
-  private Date date;
-  private String justificatif;
-  private boolean validation;
+  private LocalDateTime date;
+  private LocalDateTime heureDebut;
+  private LocalDateTime heureFin;
+  private String courId;
+  private String classeId;
+  
 }

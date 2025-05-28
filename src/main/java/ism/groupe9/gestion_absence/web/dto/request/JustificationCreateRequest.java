@@ -1,9 +1,6 @@
-package ism.groupe9.gestion_absence.data.entities;
+package ism.groupe9.gestion_absence.web.dto.request;
 
 import java.util.Date;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,13 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Document
-public class Justification {
-  
-  @Id
+public class JustificationCreateRequest {
+
   private String id;
   private String etudiantId;
   private Date date;
   private String justificatif;
   private boolean validation;
+
 }
