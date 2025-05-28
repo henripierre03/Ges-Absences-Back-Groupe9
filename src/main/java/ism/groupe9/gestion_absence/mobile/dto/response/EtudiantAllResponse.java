@@ -1,6 +1,5 @@
 package ism.groupe9.gestion_absence.mobile.dto.response;
 
-import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import ism.groupe9.gestion_absence.data.enums.Filiere;
@@ -23,6 +22,5 @@ public class EtudiantAllResponse {
   private UserRole role;
   private Filiere filiere;
   private Niveau niveau;
-  private List<AbsenceOnlyResponse> absences;
 
 }

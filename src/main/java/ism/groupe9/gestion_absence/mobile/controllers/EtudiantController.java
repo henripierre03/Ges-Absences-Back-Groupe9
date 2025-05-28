@@ -36,19 +36,6 @@ public interface EtudiantController {
   @ApiResponse(responseCode = "409", description = "Conflit, l'étudiant existe déjà.")
   ResponseEntity<Map<String, Object>> create(@RequestBody Etudiant etudiant);
 
-  @PutMapping("/{id}")
-  @Operation(summary = "Mettre à jour un étudiant", description = "Cette méthode permet de mettre à jour les informations d'un étudiant existant.")
-  @ApiResponse(responseCode = "200", description = "Étudiant mis à jour avec succès.")
-  @ApiResponse(responseCode = "404", description = "Étudiant non trouvé, l'ID fourni ne correspond à aucun étudiant.")
-  @ApiResponse(responseCode = "400", description = "Requête invalide, l'ID fourni n'est pas valide.")
-  ResponseEntity<Map<String, Object>> update(@PathVariable String id, @RequestBody Etudiant etudiant);
-
-  @DeleteMapping("/{id}")
-  @Operation(summary = "Supprimer un étudiant", description = "Cette méthode permet de supprimer un étudiant par son ID.")
-  @ApiResponse(responseCode = "200", description = "Étudiant supprimé avec succès.")
-  @ApiResponse(responseCode = "404", description = "Étudiant non trouvé, l'ID fourni ne correspond à aucun étudiant.")
-  @ApiResponse(responseCode = "400", description = "Requête invalide, l'ID fourni n'est pas valide.")
-  ResponseEntity<Map<String, Object>> delete(@PathVariable String id);
 
   @GetMapping("/absence/{matricule}")
   ResponseEntity<Map<String, Object>> getAbsencesByEtuduiant(@PathVariable String matricule);

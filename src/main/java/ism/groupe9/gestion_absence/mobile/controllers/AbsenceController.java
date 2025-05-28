@@ -30,10 +30,5 @@ public interface AbsenceController {
   @ApiResponse(responseCode = "409", description = "Conflit, l'absence existe déjà.")
   ResponseEntity<Map<String, Object>> create(@RequestBody AbsenceCreateRequest absenceRequest);
 
-  @GetMapping("/cour/{id}")
-  @Operation(summary = "Recuperer les absences d'un cours", description = "Cette méthode permet de récupérer les absences associées à un cours spécifique.")
-  @ApiResponse(responseCode = "200", description = "Absences récupérées avec succès.")
-  @ApiResponse(responseCode = "404", description = "Aucune absence trouvée pour le cours spécifié.")
-  ResponseEntity<Map<String, Object>> getByCourId(@PathVariable String id);
 
 }
