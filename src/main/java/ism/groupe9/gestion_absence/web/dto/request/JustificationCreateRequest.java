@@ -1,4 +1,5 @@
-package ism.groupe9.gestion_absence.web.dto.request.mobile;
+package ism.groupe9.gestion_absence.web.dto.request;
+
 import java.util.Date;
 
 import lombok.Getter;

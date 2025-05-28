@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.dto.request.web;
+package ism.groupe9.gestion_absence.web.dto.request;
 
 import java.util.Date;
 

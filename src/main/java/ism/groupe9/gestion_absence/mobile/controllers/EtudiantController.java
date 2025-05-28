@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.controllers;
+package ism.groupe9.gestion_absence.mobile.controllers;
 
 import java.util.Map;
 
@@ -26,7 +26,8 @@ public interface EtudiantController {
   ResponseEntity<Map<String, Object>> getAll();
 
   @GetMapping("/{matricule}")
-  ResponseEntity<Map<String, Object>> getByEtudiant(@Parameter(description = "Matricule de l'etudiant",required = true) @PathVariable String matricule);
+  ResponseEntity<Map<String, Object>> getByEtudiant(
+      @Parameter(description = "Matricule de l'etudiant", required = true) @PathVariable String matricule);
 
   @PostMapping
   @Operation(summary = "Créer un nouvel étudiant", description = "Cette méthode permet de créer un nouvel étudiant.")

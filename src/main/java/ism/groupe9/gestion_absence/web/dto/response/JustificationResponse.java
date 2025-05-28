@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.dto.request.web;
+package ism.groupe9.gestion_absence.web.dto.response;
 
 import java.util.Date;
 
@@ -8,10 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class JustificationCreateRequest {
-
+public class JustificationResponse {
+  
   private String id;
-  private String etudiantId;
   private Date date;
   private String justificatif;
   private boolean validation;

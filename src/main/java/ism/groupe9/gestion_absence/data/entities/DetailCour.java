@@ -16,6 +16,6 @@ public class DetailCour {
   @Id
   private String id;
   private LocalDateTime date;
-  private String coursId;
+  private String courId;
   private String ClasseId;
 }
