@@ -29,6 +29,7 @@ public class Etudiant extends User {
   private String matricule;
   private Niveau niveau;
   private String classeId;
+  private List<AnneeScolaire> anneesScolaires = new ArrayList<>();
   private List<Absence> absences = new ArrayList<>();
 
   public void addAbsence(Absence absence) {

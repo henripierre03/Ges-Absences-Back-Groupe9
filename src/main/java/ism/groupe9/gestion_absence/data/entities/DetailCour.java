@@ -13,9 +13,13 @@ import lombok.Setter;
 
 @Document
 public class DetailCour {
+
   @Id
   private String id;
   private LocalDateTime date;
+  private LocalDateTime heureDebut;
+  private LocalDateTime heureFin;
   private String courId;
-  private String ClasseId;
+  private String classeId;
+  
 }
