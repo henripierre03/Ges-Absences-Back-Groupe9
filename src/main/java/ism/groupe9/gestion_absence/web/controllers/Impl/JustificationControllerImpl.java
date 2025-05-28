@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.web.controllers.impl;
+package ism.groupe9.gestion_absence.web.controllers.Impl;
 
 import java.util.Map;
 
