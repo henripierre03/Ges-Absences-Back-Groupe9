@@ -11,8 +11,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
-@RequestMapping("/api/etudiant")
-public interface EtudiantController {
+@RequestMapping("/api/mobile/etudiant")
+public interface MobileEtudiantController {
 
   @GetMapping("")
   @Operation(summary = "Recuperer tous les étudiants", description = "Cette méthode permet de récupérer la liste de tous les étudiants.")

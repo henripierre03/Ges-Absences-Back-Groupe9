@@ -12,8 +12,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.mobile.dto.request.AbsenceCreateRequest;
 
-@RequestMapping("/api/absence")
-public interface AbsenceController {
+@RequestMapping("/api/mobile/absence")
+public interface MobileAbsenceController {
 
   @GetMapping("")
   @Operation(summary = "Recuperer toutes les absences", description = "Cette méthode permet de récupérer la liste de toutes les absences.")

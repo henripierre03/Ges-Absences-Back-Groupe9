@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
-@RequestMapping("/api/justification")
-public interface JustificationController {
+@RequestMapping("/api/mobile/justification")
+public interface MobileJustificationController {
 
   @GetMapping("/absence/{absenceId}")
   @Operation(summary = "Recuperer la justification par absence", description = "Cette méthode permet de récupérer la justification associée à une absence spécifique.")

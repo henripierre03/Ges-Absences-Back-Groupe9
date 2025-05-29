@@ -9,5 +9,6 @@ import ism.groupe9.gestion_absence.mobile.dto.request.LoginRequest;
 @RequestMapping("/api/auth")
 public interface AuthController {
   
+  @RequestMapping("/login")
   ResponseEntity<?> login(@RequestBody LoginRequest loginRequest);
 }

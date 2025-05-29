@@ -7,13 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import ism.groupe9.gestion_absence.services.EtudiantService;
-import ism.groupe9.gestion_absence.mobile.controllers.EtudiantController;
+import ism.groupe9.gestion_absence.mobile.controllers.MobileEtudiantController;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-public class EtudiantControllerImpl implements EtudiantController {
+public class MobileEtudiantControllerImpl implements MobileEtudiantController {
 
   private final EtudiantService etudiantService;
 

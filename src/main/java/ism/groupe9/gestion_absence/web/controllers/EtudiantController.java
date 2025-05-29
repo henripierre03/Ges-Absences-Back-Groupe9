@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
 
-@RequestMapping("/api/etudiant")
+@RequestMapping("/api/web/etudiant")
 public interface EtudiantController {
 
   @GetMapping("")

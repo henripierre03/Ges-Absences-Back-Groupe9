@@ -6,10 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
-import ism.groupe9.gestion_absence.web.controllers.AbsenceController;
+import ism.groupe9.gestion_absence.mobile.controllers.MobileAbsenceController;
+import ism.groupe9.gestion_absence.mobile.dto.request.AbsenceCreateRequest;
 
 @RestController
-public class AbsenceControllerImpl implements AbsenceController {
+public class MobileAbsenceControllerImpl implements MobileAbsenceController {
 
   @Override
   public ResponseEntity<Map<String, Object>> getAll() {
@@ -18,15 +19,9 @@ public class AbsenceControllerImpl implements AbsenceController {
   }
 
   @Override
-  public ResponseEntity<Map<String, Object>> create(Absence absenceRequest) {
+  public ResponseEntity<Map<String, Object>> create(AbsenceCreateRequest absenceRequest) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'create'");
-  }
-
-  @Override
-  public ResponseEntity<Map<String, Object>> getByCourId(String id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getByCourId'");
   }
 
 }
