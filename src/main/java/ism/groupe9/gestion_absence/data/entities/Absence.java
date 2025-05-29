@@ -1,5 +1,6 @@
 package ism.groupe9.gestion_absence.data.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
@@ -22,4 +23,5 @@ public class Absence {
   private TypeAbsence typeAbsence;
   private String justificationId;
   private String courId;
+
 }
