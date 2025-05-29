@@ -28,4 +28,4 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/api/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDQxODgsImV4cCI6MTc0ODYzMDU4OH0.4S57r0wim58F7kCMHbphOpDzMGak_D724AUbohTkAN0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDYxNjEsImV4cCI6MTc0ODYzMjU2MX0.k271BzLFk5d8AJohNAy0UXi6e3z5Luafvc6f_plZC80
