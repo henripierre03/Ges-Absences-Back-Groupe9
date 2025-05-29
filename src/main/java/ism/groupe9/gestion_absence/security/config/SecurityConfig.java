@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import ism.groupe9.gestion_absence.data.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -31,6 +32,10 @@ public class SecurityConfig {
                 "/v3/api-docs/**",
                 "/error")
             .permitAll()
+            .requestMatchers(
+                "/api/web/justification/**")
+            .hasAnyRole(UserRole.ADMIN.name())
+
             .anyRequest().authenticated())
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
