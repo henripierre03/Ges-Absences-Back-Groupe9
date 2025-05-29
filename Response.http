@@ -1,9 +1,11 @@
 GET http://localhost:8080/api/web/etudiant
-Authorization: Basic dXNlcjo3NGUwZTQ3Yy1lOWVkLTQ4ODMtYTkyMC1kODc1YTM0MjM2ZjA=
+Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
+
 ###
 POST http://localhost:8080/api/web/etudiant
 Accept: application/json
 Content-Type: application/json
+Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
 
 {
   "nom": "Test",
@@ -13,11 +15,13 @@ Content-Type: application/json
   "role": "ADMIN"
 }
 
+
 ###
-POST /api/auth/login
+POST http://localhost:8080/api/auth/login
+Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "votre_email",
-    "password": "votre_mot_de_passe"
+    "email": "etudiant1@example.com",
+    "password": "password1"
 }

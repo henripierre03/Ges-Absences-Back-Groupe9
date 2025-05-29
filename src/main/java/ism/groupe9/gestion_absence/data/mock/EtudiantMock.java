@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
 import ism.groupe9.gestion_absence.data.enums.UserRole;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 
-// @Component
-// @Order(1)
+@Component
+@Order(1)
 @RequiredArgsConstructor
 public class EtudiantMock implements CommandLineRunner {
 
   private final EtudiantRepository etudiantRepository;
+  private final PasswordEncoder passwordEncoder;
+
 
   @Override
   public void run(String... args) throws Exception {
@@ -27,7 +32,7 @@ public class EtudiantMock implements CommandLineRunner {
       etudiant.setPrenom("Prenom " + i);
       etudiant.setEmail("etudiant" + i + "@example.com");
       etudiant.setMatricule("MATRICULE" + i);
-      etudiant.setPassword("password" + i);
+      etudiant.setPassword(passwordEncoder.encode("password" + i));
       etudiant.setRole(UserRole.ETUDIANT);
 
       etudiants.add(etudiant);

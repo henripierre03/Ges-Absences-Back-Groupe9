@@ -28,7 +28,7 @@ public interface EtudiantController {
   @GetMapping("/{matricule}")
   ResponseEntity<Map<String, Object>> getByEtudiant(@Parameter(description = "Matricule de l'etudiant",required = true) @PathVariable String matricule);
 
-  @PostMapping
+  @PostMapping("")
   @Operation(summary = "Créer un nouvel étudiant", description = "Cette méthode permet de créer un nouvel étudiant.")
   @ApiResponse(responseCode = "201", description = "Étudiant créé avec succès.")
   @ApiResponse(responseCode = "400", description = "Requête invalide, les données fournies ne sont pas valides.")

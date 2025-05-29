@@ -1,8 +1,9 @@
-package ism.groupe9.security.services;
+package ism.groupe9.gestion_absence.security.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import ism.groupe9.gestion_absence.data.entities.Admin;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
@@ -10,9 +11,10 @@ import ism.groupe9.gestion_absence.data.entities.Vigile;
 import ism.groupe9.gestion_absence.data.repositories.AdminRepository;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import ism.groupe9.gestion_absence.data.repositories.VigileRepository;
-import ism.groupe9.security.entity.UserAuth;
+import ism.groupe9.gestion_absence.security.entity.UserAuth;
 import lombok.RequiredArgsConstructor;
 
+@Service
 @RequiredArgsConstructor
 public class UserAuthService implements UserDetailsService {
 

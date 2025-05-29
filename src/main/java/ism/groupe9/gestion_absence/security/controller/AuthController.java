@@ -1,4 +1,4 @@
-package ism.groupe9.security.controller;
+package ism.groupe9.gestion_absence.security.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

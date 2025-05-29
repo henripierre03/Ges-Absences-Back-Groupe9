@@ -1,4 +1,4 @@
-package ism.groupe9.security.entity;
+package ism.groupe9.gestion_absence.security.entity;
 
 import java.util.Collection;
 import java.util.Collections;

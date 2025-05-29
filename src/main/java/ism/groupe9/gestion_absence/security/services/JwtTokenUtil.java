@@ -1,4 +1,4 @@
-package ism.groupe9.security.services;
+package ism.groupe9.gestion_absence.security.services;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
