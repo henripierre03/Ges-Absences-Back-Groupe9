@@ -13,8 +13,8 @@ import ism.groupe9.gestion_absence.data.enums.UserRole;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 
-@Component
-@Order(1)
+// @Component
+// @Order(1)
 @RequiredArgsConstructor
 public class EtudiantMock implements CommandLineRunner {
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import ism.groupe9.gestion_absence.security.services.JwtTokenUtil;
+import ism.groupe9.gestion_absence.security.services.TokenBlacklistService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtTokenUtil jwtTokenUtil;
   private final UserDetailsService userDetailsService;
+  private final TokenBlacklistService tokenBlacklistService;
 
   @Override
   protected void doFilterInternal(
@@ -39,6 +41,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     jwt = authHeader.substring(7);
+
+    // Vérifier si le token est dans la liste noire
+    if (tokenBlacklistService.isTokenBlacklisted(jwt)) {
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      return;
+    }
+
     userEmail = jwtTokenUtil.getUsernameFromToken(jwt);
 
     if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {

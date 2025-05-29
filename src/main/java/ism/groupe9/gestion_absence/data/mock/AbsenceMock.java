@@ -15,8 +15,8 @@ import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 
-@Component
-@Order(2)
+// @Component
+// @Order(2)
 @RequiredArgsConstructor
 public class AbsenceMock implements CommandLineRunner {
 
@@ -42,7 +42,6 @@ public class AbsenceMock implements CommandLineRunner {
       }
       etudiantsModifies.add(etudiant);
     }
-    
     absenceRepository.saveAll(absences);
     etudiantRepository.saveAll(etudiantsModifies);
   }

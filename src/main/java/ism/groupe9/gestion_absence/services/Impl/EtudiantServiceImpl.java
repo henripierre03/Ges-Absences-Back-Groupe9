@@ -31,4 +31,12 @@ public class EtudiantServiceImpl implements EtudiantService {
     return etudiantRepository.save(etudiant);
   }
 
+  @Override
+  public Etudiant update(Etudiant etudiant) {
+    if (!etudiantRepository.existsById(etudiant.getId())) {
+      throw new RuntimeException("Etudiant not found with id: " + etudiant.getId());
+    }
+    return etudiantRepository.save(etudiant);
+  }
+
 }

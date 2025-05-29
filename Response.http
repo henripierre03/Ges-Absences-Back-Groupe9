@@ -1,5 +1,5 @@
 GET http://localhost:8080/api/web/etudiant
-Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDM5ODYsImV4cCI6MTc0ODYzMDM4Nn0.iBV5nNzrFNNEamCpFFxqe-NKv2FiNROwO5bfZhW687I
 
 ###
 POST http://localhost:8080/api/web/etudiant
@@ -25,3 +25,7 @@ Content-Type: application/json
     "email": "etudiant1@example.com",
     "password": "password1"
 }
+
+###
+GET http://localhost:8080/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDQxODgsImV4cCI6MTc0ODYzMDU4OH0.4S57r0wim58F7kCMHbphOpDzMGak_D724AUbohTkAN0
