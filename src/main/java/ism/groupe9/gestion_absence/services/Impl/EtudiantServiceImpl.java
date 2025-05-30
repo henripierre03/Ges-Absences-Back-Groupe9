@@ -24,27 +24,24 @@ public class EtudiantServiceImpl implements EtudiantService {
      * @return une liste de tous les étudiants
      */
     @Override
-    public List<Etudiant> getAll() {
-        logger.info("Récupération de tous les étudiants");
-        return etudiantRepository.findAll();
+public List<Etudiant> getAll() {
+    List<Etudiant> etudiants = etudiantRepository.findAll();
+    if (etudiants.isEmpty()) {
+        logger.warn("Aucun étudiant trouvé dans la base de données.");
     }
+    return etudiants;
+}
 
-    /**
-     * Récupère un étudiant par son identifiant.
-     *
-     * @param id l'identifiant de l'étudiant à récupérer
-     * @return l'étudiant correspondant à l'identifiant
-     * @throws RuntimeException si aucun étudiant n'est trouvé avec l'identifiant donné
-     */
-    @Override
-    public Etudiant getById(String id) {
-        logger.info("Récupération de l'étudiant avec l'identifiant : {}", id);
-        return etudiantRepository.findById(id)
-                .orElseThrow(() -> {
-                    logger.error("Aucun étudiant trouvé avec l'identifiant : {}", id);
-                    return new RuntimeException("Etudiant not found with id: " + id);
-                });
+@Override
+public Etudiant getById(String id) {
+    if (id == null || id.isEmpty()) {
+        logger.error("L'identifiant de l'étudiant ne peut pas être null ou vide.");
+        throw new IllegalArgumentException("L'identifiant de l'étudiant ne peut pas être null ou vide.");
     }
+    return etudiantRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Etudiant not found with id: " + id));
+}
+
 
     /**
      * Sauvegarde un étudiant dans la base de données.
@@ -62,4 +59,5 @@ public class EtudiantServiceImpl implements EtudiantService {
         logger.info("Sauvegarde de l'étudiant : {}", etudiant);
         return etudiantRepository.save(etudiant);
     }
+    
 }
