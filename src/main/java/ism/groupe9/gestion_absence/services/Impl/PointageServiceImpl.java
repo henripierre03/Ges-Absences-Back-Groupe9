@@ -2,7 +2,7 @@ package ism.groupe9.gestion_absence.services.Impl;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
-import ism.groupe9.gestion_absence.mobile.dto.response.PointageSimpResponse;
+import ism.groupe9.gestion_absence.mobile.dto.response.PointageSimpleResponse;
 import ism.groupe9.gestion_absence.services.PointageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class PointageServiceImpl implements PointageService {
     private AbsenceRepository absenceRepository;
 
     @Override
-    public List<PointageSimpResponse> getPointagesByMatricule(String matricule, LocalDate date) {
+    public List<PointageSimpleResponse> getPointagesByMatricule(String matricule, LocalDate date) {
         List<Absence> absences = absenceRepository.findByEtudiantMatriculeAndDate(matricule, date);
         return absences.stream()
                 .map(this::mapToResponse)
@@ -27,17 +27,17 @@ public class PointageServiceImpl implements PointageService {
     }
 
     @Override
-    public List<PointageSimpResponse> getPointagesByMatricule(String matricule) {
+    public List<PointageSimpleResponse> getPointagesByMatricule(String matricule) {
         List<Absence> absences = absenceRepository.findByEtudiantMatricule(matricule);
         return absences.stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
     }
-
-    private PointageSimpResponse mapToResponse(Absence absence) {
-        PointageSimpResponse response = new PointageSimpResponse();
+    
+    private PointageSimpleResponse mapToResponse(Absence absence) {
+        PointageSimpleResponse response = new PointageSimpleResponse();
         response.setDate(absence.getDate());
-        response.setType(absence.getType().name()); // enum to String
+        response.setTypeAbsence(absence.getTypeAbsence().name()); //
         return response;
     }
 }

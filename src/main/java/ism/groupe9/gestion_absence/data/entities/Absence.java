@@ -1,6 +1,6 @@
 package ism.groupe9.gestion_absence.data.entities;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;

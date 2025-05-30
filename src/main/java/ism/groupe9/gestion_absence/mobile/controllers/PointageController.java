@@ -2,8 +2,7 @@ package ism.groupe9.gestion_absence.mobile.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import ism.groupe9.gestion_absence.mobile.dto.request.PointageCreateRequest;
-import ism.groupe9.gestion_absence.mobile.dto.response.PointageSimpResponse;
+import ism.groupe9.gestion_absence.mobile.dto.response.PointageSimpleResponse;
 import ism.groupe9.gestion_absence.services.PointageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class PointageController {
         summary = "Lister les pointages d’un étudiant",
         description = "Retourne tous les pointages d’un étudiant pour une date précise (ou tous si aucune date n’est donnée)."
     )
-    public List<PointageSimpResponse> getPointagesByMatricule(
+    public List<PointageSimpleResponse> getPointagesByMatricule(
             @RequestParam String matricule,
             @RequestParam(required = false) String date
     ) {

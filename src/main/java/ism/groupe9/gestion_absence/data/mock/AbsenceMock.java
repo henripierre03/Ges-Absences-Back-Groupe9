@@ -2,7 +2,6 @@ package ism.groupe9.gestion_absence.data.mock;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
