@@ -44,9 +44,12 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
           RestResponse.response(HttpStatus.BAD_REQUEST, "Cette absence a deja une justification", "string"),
           HttpStatus.BAD_REQUEST);
     }
-    var newJustification = justificationService.create(justificationMapper.toEntity(request));
+    var justification = justificationMapper.toEntity(request);
+    justification.setAbsenceId(absenceId);
+    var newJustification = justificationService.create(justification);
     return new ResponseEntity<>(
-        RestResponse.response(HttpStatus.CREATED, "Justification created successfully", newJustification), 
+        RestResponse.response(HttpStatus.CREATED,
+            justificationMapper.toJustificationSimpleResponse(newJustification), "justificationSimpleResponse"),
         HttpStatus.CREATED);
 
   }
