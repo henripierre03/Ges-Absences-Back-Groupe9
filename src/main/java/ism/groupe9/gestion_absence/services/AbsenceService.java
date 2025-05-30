@@ -14,4 +14,6 @@ public interface AbsenceService {
 
   Absence save(Absence absence);
 
+  Absence getById(String id);
+
 }

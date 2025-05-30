@@ -17,6 +17,7 @@ public class Justification {
   @Id
   private String id;
   private String etudiantId;
+  private String absenceId;
   private Date date;
   private String justificatif;
   private boolean validation;

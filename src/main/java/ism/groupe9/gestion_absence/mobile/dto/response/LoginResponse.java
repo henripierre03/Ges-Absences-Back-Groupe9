@@ -12,6 +12,7 @@ import lombok.Setter;
 public class LoginResponse {
   private String token;
   private String email;
+  private String matricule;
   private UserRole role;
   private String type = "Bearer";
 }
