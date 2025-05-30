@@ -1,5 +1,16 @@
+POST http://localhost:8080/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "etudiant1@example.com",
+    "password": "password1"
+}
+
+# @token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDM2MjMsImV4cCI6MTc0ODY5MDAyM30.l89bwaRHgLdrHz66neauiJO2hx-3ICZtV1nFhGSsU6w
+###
 GET http://localhost:8080/api/web/etudiant
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDM5ODYsImV4cCI6MTc0ODYzMDM4Nn0.iBV5nNzrFNNEamCpFFxqe-NKv2FiNROwO5bfZhW687I
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDYzNjgsImV4cCI6MTc0ODY5Mjc2OH0.MjDELoQGXkZa8bArEnxeQNZfnP2dRMqweaXXl0Xdbvs
 
 ###
 POST http://localhost:8080/api/web/etudiant
@@ -17,14 +28,7 @@ Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
 
 
 ###
-POST http://localhost:8080/api/auth/login
-Accept: application/json
-Content-Type: application/json
 
-{
-    "email": "etudiant1@example.com",
-    "password": "password1"
-}
 
 ###
 GET http://localhost:8080/api/auth/logout
