@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.mobile.dto.request.AbsenceCreateRequest;
 
-@RequestMapping("/api/absence")
+@RequestMapping("/api/mobile/absence")
 public interface AbsenceController {
 
   @GetMapping("")
@@ -27,7 +26,7 @@ public interface AbsenceController {
   @Operation(summary = "Récupérer les absences d'un étudiant", description = "Cette méthode permet de récupérer les absences d'un étudiant à partir de son ID.")
   @ApiResponse(responseCode = "200", description = "Absences récupérées avec succès.")
   @ApiResponse(responseCode = "404", description = "Aucune absence trouvée pour cet étudiant.")
-  ResponseEntity<Map<String, Object>> getAbsencesByEtudiantId(@PathVariable String id);
+  ResponseEntity<Map<String, Object>> getAbsencesByEtudiantId(String id);
 
   @PostMapping("")
   @Operation(summary = "Créer une nouvelle absence", description = "Cette méthode permet de créer une nouvelle absence.")
@@ -35,5 +34,4 @@ public interface AbsenceController {
   @ApiResponse(responseCode = "400", description = "Requête invalide, les données fournies ne sont pas valides.")
   @ApiResponse(responseCode = "409", description = "Conflit, l'absence existe déjà.")
   ResponseEntity<Map<String, Object>> create(@RequestBody AbsenceCreateRequest absenceRequest);
-
 }
