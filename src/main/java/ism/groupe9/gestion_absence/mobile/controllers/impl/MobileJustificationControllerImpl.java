@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.Justification;
+import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import ism.groupe9.gestion_absence.mobile.controllers.MobileJustificationController;
 import ism.groupe9.gestion_absence.mobile.dto.request.JustificationCreateRequest;
 import ism.groupe9.gestion_absence.mobile.mappers.JustificationMapper;
@@ -37,6 +38,12 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
     if (absence == null) {
       return new ResponseEntity<>(RestResponse.response(HttpStatus.NOT_FOUND, "Absence not found", "string"),
           HttpStatus.NOT_FOUND);
+    }
+    if (absence.getTypeAbsence() == TypeAbsence.PRESENCE || absence.getTypeAbsence() == TypeAbsence.RETARD) {
+      return new ResponseEntity<>(
+          RestResponse.response(HttpStatus.BAD_REQUEST, "Cette absence ne peut pas avoir de justification", "string"),
+          HttpStatus.BAD_REQUEST);
+
     }
     Justification existingJustification = justificationService.getByAbsence(absenceId);
     if (existingJustification != null) {

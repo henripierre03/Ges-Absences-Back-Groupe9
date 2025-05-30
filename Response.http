@@ -13,6 +13,21 @@ GET http://localhost:8080/api/web/etudiant
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDYzNjgsImV4cCI6MTc0ODY5Mjc2OH0.MjDELoQGXkZa8bArEnxeQNZfnP2dRMqweaXXl0Xdbvs
 
 ###
+POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDYzNjgsImV4cCI6MTc0ODY5Mjc2OH0.MjDELoQGXkZa8bArEnxeQNZfnP2dRMqweaXXl0Xdbvs
+
+{
+  "etudiantId": "etudiant1",
+  "absenceId": "absence1",
+  "date": "2023-10-01T00:00:00Z",
+  "justificatif": "FDFUDFOFOJFNLD",
+  "validation": false
+}
+
+
+###
 POST http://localhost:8080/api/web/etudiant
 Accept: application/json
 Content-Type: application/json

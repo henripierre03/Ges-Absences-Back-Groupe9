@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class AbsenceServiceImpl implements AbsenceService {
 
-  private AbsenceRepository absenceRepository;
+  private final AbsenceRepository absenceRepository;
 
   @Override
   public List<Absence> getAll() {
@@ -29,8 +29,7 @@ public class AbsenceServiceImpl implements AbsenceService {
 
   @Override
   public Absence save(Absence absence) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'save'");
+    return absenceRepository.save(absence);
   }
 
   @Override

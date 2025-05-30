@@ -16,7 +16,5 @@ public interface EtudiantMapper {
 
 
   EtudiantAllResponse toEtudiantAllResponse(Etudiant etudiant);
-  
-  EtudiantAllResponse toEtudiantAllResponseWeb(Etudiant etudiant);
 
 }
