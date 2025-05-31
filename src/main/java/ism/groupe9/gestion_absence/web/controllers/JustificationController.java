@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.data.entities.Justification;
 
-@RequestMapping("/api/justification")
+@RequestMapping("/api/web/justification")
 public interface JustificationController {
 
   @GetMapping("")

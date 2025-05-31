@@ -15,6 +15,7 @@ public class AbsenceCreateRequest {
 
   private String id;
   private String etudiantId;
+  private String vigileId;
   private LocalDateTime date;
   private TypeAbsence typeAbsence;
   private String justificationId;
