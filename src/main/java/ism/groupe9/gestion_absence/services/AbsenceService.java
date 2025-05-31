@@ -10,8 +10,11 @@ import ism.groupe9.gestion_absence.data.entities.Absence;
 public interface AbsenceService {
   List<Absence> getAll();
 
-  Absence getByEtudiant(String id);
+  List<Absence> getByEtudiant(String id);
 
   Absence save(Absence absence);
+
+  Absence getById(String id);
+  List<Absence> getByVigileId(String id);
 
 }

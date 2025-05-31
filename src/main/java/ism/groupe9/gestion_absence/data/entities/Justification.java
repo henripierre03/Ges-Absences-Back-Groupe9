@@ -1,5 +1,7 @@
 package ism.groupe9.gestion_absence.data.entities;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +17,8 @@ public class Justification {
   @Id
   private String id;
   private String etudiantId;
-  private String date;
+  private String absenceId;
+  private LocalDateTime date;
   private String justificatif;
   private boolean validation;
 }

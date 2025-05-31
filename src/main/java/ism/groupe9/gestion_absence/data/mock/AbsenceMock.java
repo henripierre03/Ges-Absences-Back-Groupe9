@@ -1,7 +1,7 @@
 package ism.groupe9.gestion_absence.data.mock;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -14,8 +14,8 @@ import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 
-@Component
-@Order(2)
+// @Component
+// @Order(2)
 @RequiredArgsConstructor
 public class AbsenceMock implements CommandLineRunner {
 
@@ -33,15 +33,14 @@ public class AbsenceMock implements CommandLineRunner {
         
           Absence absence = new Absence();
           absence.setEtudiantId(etudiant.getId());
-          absence.setDate(new Date());
-          absence.setJustification(null);
+          absence.setDate(LocalDateTime.now());
+          absence.setJustificationId(null);
           etudiant.addAbsence(absence);
           absences.add(absence);
         
       }
       etudiantsModifies.add(etudiant);
     }
-    
     absenceRepository.saveAll(absences);
     etudiantRepository.saveAll(etudiantsModifies);
   }

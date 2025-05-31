@@ -1,10 +1,12 @@
 package ism.groupe9.gestion_absence.data.entities;
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +15,14 @@ import lombok.Setter;
 
 @Document
 public class Absence {
-  
+
   @Id
   private String id;
   private String etudiantId;
-  private Date date;
-  private Justification justification;
+  private String vigileId;
+  private LocalDateTime date;
+  private TypeAbsence typeAbsence;
+  private String justificationId;
+  private String courId;
+
 }
-    

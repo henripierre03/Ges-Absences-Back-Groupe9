@@ -17,5 +17,5 @@ public class Classe {
   @Id
   private String id;
   private String nom;
-  List<Cours> cours;  
+  List<DetailCour> detailCours;
 }

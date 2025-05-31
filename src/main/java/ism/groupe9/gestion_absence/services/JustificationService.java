@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ism.groupe9.gestion_absence.data.entities.Justification;
+
 @Service
-public interface Justification {
+public interface JustificationService {
   List<Justification> getAll();
   Justification getByEtudiant(String id);
   Justification getByAbsence(String id);
-  Justification save(Justification justification);
+  Justification create(Justification justification);
   
 }
