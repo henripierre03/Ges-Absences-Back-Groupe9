@@ -54,7 +54,7 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
 
   @Override
   public ResponseEntity<Map<String, Object>> pointageEtudiant(PointageRequest request) {
-
+    System.out.println("Pointage request: " + request.getVigileId());
     var etudiant = etudiantService.getByMatricule(request.getMatricule());
     if (etudiant == null) {
       return new ResponseEntity<>(
