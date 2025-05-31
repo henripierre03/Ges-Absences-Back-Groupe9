@@ -60,3 +60,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 ###
 POST http://localhost:8080/api/mobile/vigile/pointages?matricule=683a2baa938d190c97dce742
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTk4OTksImV4cCI6MTc0ODc0NjI5OX0.1KPKLAdai4FTYUVUhRSqOVH8SmiRf-FrHBDKz0QOnwY
+
+###
+GET  http://localhost:8080/api/mobile/etudiant/MATRICULE1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODY0OTUsImV4cCI6MTc0ODc3Mjg5NX0.DVmamvWA--syv-6xfpKDgaNN6dT1M2H00uHRQ-Oi6Vc

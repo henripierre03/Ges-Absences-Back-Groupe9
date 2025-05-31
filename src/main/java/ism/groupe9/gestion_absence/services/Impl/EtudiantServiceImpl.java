@@ -47,4 +47,9 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
   }
 
+  @Override
+  public Etudiant getByMatricule(String matricule) {
+    return etudiantRepository.findByMatricule(matricule);
+  }
+
 }

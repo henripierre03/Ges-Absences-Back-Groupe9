@@ -10,5 +10,6 @@ public interface EtudiantService {
   Etudiant update(String id, Etudiant etudiant);
   Etudiant getById(String id);
   Etudiant save(Etudiant etudiant);
+  Etudiant getByMatricule(String matricule);
   
 }

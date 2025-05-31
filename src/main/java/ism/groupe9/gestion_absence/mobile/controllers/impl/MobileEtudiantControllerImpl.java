@@ -31,8 +31,17 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
 
   @Override
   public ResponseEntity<Map<String, Object>> getByMatricule(String matricule) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    var etudiant = etudiantService.getByMatricule(matricule);
+    if (etudiant == null) {
+      return new ResponseEntity<>(
+          RestResponse.response(HttpStatus.NOT_FOUND, "Etudiant not found", "string"),
+          HttpStatus.NOT_FOUND);
+    }
+    var etudiantResponse = etudiantMapper.toEtudiantSimpleResponse(etudiant);
+    return new ResponseEntity<>(
+        RestResponse.response(HttpStatus.OK, etudiantResponse, "etudiantSimpleResponse"),
+        HttpStatus.OK);
+
   }
 
 }
