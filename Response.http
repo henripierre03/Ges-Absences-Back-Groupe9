@@ -10,7 +10,7 @@ Content-Type: application/json
 # @token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDM2MjMsImV4cCI6MTc0ODY5MDAyM30.l89bwaRHgLdrHz66neauiJO2hx-3ICZtV1nFhGSsU6w
 ###
 GET http://localhost:8080/api/web/etudiant
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDYzNjgsImV4cCI6MTc0ODY5Mjc2OH0.MjDELoQGXkZa8bArEnxeQNZfnP2dRMqweaXXl0Xdbvs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NDI5MjQsImV4cCI6MTc0ODcyOTMyNH0.DYP5of9VgcO48IDmzcNNrMXs23x3NouXB7Zpemxe64M
 
 ###
 POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
@@ -48,3 +48,7 @@ Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
 ###
 GET http://localhost:8080/api/auth/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDcxMDMsImV4cCI6MTc0ODYzMzUwM30.8xw6S8W8m69mW2rPqn6nbL8RmWcGrhip3G0mCMf4JDQ
+
+###
+GET http://localhost:8080/api/mobile/absence/vigile/683a26cf3c3198f4349f996f
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTI3MDUsImV4cCI6MTc0ODczOTEwNX0.835Ss77d6Opa9uLtg1KJanzgo1wKb9zP1Sma1PjmBSI
