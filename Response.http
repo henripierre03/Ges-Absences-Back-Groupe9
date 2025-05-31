@@ -52,3 +52,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 ###
 GET http://localhost:8080/api/mobile/absence/vigile/683a26cf3c3198f4349f996f
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTI3MDUsImV4cCI6MTc0ODczOTEwNX0.835Ss77d6Opa9uLtg1KJanzgo1wKb9zP1Sma1PjmBSI
+
+###
+GET http://localhost:8080/api/mobile/absence/etudiant/683a2bab938d190c97dce743
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTk4OTksImV4cCI6MTc0ODc0NjI5OX0.1KPKLAdai4FTYUVUhRSqOVH8SmiRf-FrHBDKz0QOnwY
+
+###
+POST http://localhost:8080/api/mobile/vigile/pointages?matricule=683a2baa938d190c97dce742
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTk4OTksImV4cCI6MTc0ODc0NjI5OX0.1KPKLAdai4FTYUVUhRSqOVH8SmiRf-FrHBDKz0QOnwY

@@ -9,5 +9,6 @@ import ism.groupe9.gestion_absence.data.entities.Etudiant;
 public interface EtudiantRepository extends MongoRepository<Etudiant,String> {
   
   List<Etudiant> findByMatricule(String matricule);
+  
   Etudiant findByEmail(String email);
 }

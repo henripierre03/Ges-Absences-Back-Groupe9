@@ -22,9 +22,8 @@ public class AbsenceServiceImpl implements AbsenceService {
   }
 
   @Override
-  public Absence getByEtudiant(String id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getByEtudiant'");
+  public List<Absence> getByEtudiant(String id) {
+    return absenceRepository.findByEtudiantId(id);
   }
 
   @Override

@@ -13,15 +13,15 @@ import java.util.List;
 public interface AbsenceRepository extends MongoRepository<Absence, String> {
 
 
-  List<Absence> findByEtudiantMatricule(String matricule);
-  List<Absence> findByEtudiantMatriculeAndDate(String matricule, LocalDate date);
+  List<Absence> findByEtudiantId(String matricule);
+  List<Absence> findByEtudiantIdAndDate(String matricule, LocalDate date);
 
 
   List<Absence> findByVigileId(String vigileId);
 
   // Define custom query methods if needed
   // For example, to find absences by student ID or date range
-  List<Absence> findByEtudiantId(String etudiantId);
+  // List<Absence> findByEtudiantId(String etudiantId);
 
 
 }

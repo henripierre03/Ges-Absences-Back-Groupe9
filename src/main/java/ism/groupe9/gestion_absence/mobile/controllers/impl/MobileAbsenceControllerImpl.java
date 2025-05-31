@@ -54,4 +54,20 @@ public class MobileAbsenceControllerImpl implements MobileAbsenceController {
     }
   }
 
+  @Override
+  public ResponseEntity<Map<String, Object>> getAbsencesByEtudiantId(String id) {
+    List<Absence> absences = absenceService.getByEtudiant(id);
+
+    if (absences.isEmpty()) {
+      return ResponseEntity.status(404).body(Map.of("message", "Aucune absence trouvée pour cet étudiant."));
+    }
+
+    // return ResponseEntity.ok(Map.of("absences", absences));
+    var absencesResponse = absences.stream()
+        .map(absenceMapper::toAbsenceSimpleResponse)
+        .toList();
+    return new ResponseEntity<>(
+        RestResponse.response(HttpStatus.OK, absencesResponse, "absenceAndEtudiantResponse"), HttpStatus.OK);
+  }
+
 }

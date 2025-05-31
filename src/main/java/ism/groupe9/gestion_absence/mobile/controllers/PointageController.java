@@ -15,7 +15,7 @@ import ism.groupe9.gestion_absence.mobile.dto.response.PointageSimpleResponse;
 import ism.groupe9.gestion_absence.services.PointageService;
 
 @RestController
-@RequestMapping("/vigile")
+@RequestMapping("/api/mobile/vigile")
 @Tag(name = "Pointage", description = "API de pointage des étudiants")
 public class PointageController {
 
