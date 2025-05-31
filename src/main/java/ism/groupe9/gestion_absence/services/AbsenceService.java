@@ -15,6 +15,9 @@ public interface AbsenceService {
   Absence save(Absence absence);
 
   Absence getById(String id);
+
   List<Absence> getByVigileId(String id);
+
+  List<Absence> getByEtudiantId(String id);
 
 }

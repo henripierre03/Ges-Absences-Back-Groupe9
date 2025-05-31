@@ -3,6 +3,7 @@ package ism.groupe9.gestion_absence.services.Impl;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -67,24 +68,42 @@ public class EtudiantServiceImpl implements EtudiantService {
     if (etudiant == null) {
       throw new RuntimeException("Etudiant not found with matricule: " + matricule);
     }
+    DetailCour prochainCours = this.getProchainCoursAujourdHui(matricule);
     var cours = courRepository.findAll();
     List<DetailCour> detailCours = new ArrayList<>();
-    boolean hasCoursToday = false;
     for (Cours cour : cours) {
       for (DetailCour detailCour : cour.getDetailCours()) {
         if (detailCour.getDate().toLocalDate().equals(LocalDateTime.now().toLocalDate())) {
           if(detailCour.getClasseId().equals(etudiant.getClasseId())){
             detailCours.add(detailCour);
           }
-          hasCoursToday = true;
         }
       }
     }
-    if (!hasCoursToday) {
-      throw new RuntimeException("L'étudiant n'a pas de cours aujourd'hui");
-    }
+    
 
     return etudiant;
 
   }
+
+
+  public DetailCour getProchainCoursAujourdHui(String matricule) {
+    Etudiant etudiant = etudiantRepository.findByMatricule(matricule);
+    if (etudiant == null) {
+      throw new RuntimeException("Étudiant introuvable avec le matricule: " + matricule);
+    }
+  
+    LocalDateTime now = LocalDateTime.now();
+    LocalDate today = now.toLocalDate();
+  
+    return courRepository.findAll().stream()
+      .flatMap(c -> c.getDetailCours().stream())
+      .filter(dc -> dc.getDate().toLocalDate().equals(today))
+      .filter(dc -> dc.getClasseId().equals(etudiant.getClasseId()))
+      .filter(dc -> dc.getDate().isAfter(now))
+      .sorted(Comparator.comparing(DetailCour::getDate))
+      .findFirst()
+      .orElseThrow(() -> new RuntimeException("Aucun cours à venir aujourd’hui pour cette classe."));
+  }
+  
 }

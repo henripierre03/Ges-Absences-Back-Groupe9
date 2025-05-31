@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface AbsenceRepository extends MongoRepository<Absence, String> {
   List<Absence> findByVigileId(String vigileId);
-  // Define custom query methods if needed
-  // For example, to find absences by student ID or date range
+  List<Absence> findByEtudiantId(String etudiantId);
 
 }
