@@ -13,12 +13,5 @@ import lombok.Setter;
 @Document
 public class Admin extends User {
 
-  @Id
-  private String id;
-  private String nom;
-  private String prenom;
-  private String email;
-  private String password;
-  private UserRole role;
 
 }
