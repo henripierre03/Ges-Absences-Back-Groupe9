@@ -41,4 +41,9 @@ public class AbsenceServiceImpl implements AbsenceService {
     return absenceRepository.findByVigileId(id);
   }
 
+  @Override
+  public List<Absence> getByEtudiantId(String id) {
+    return absenceRepository.findByEtudiantId(id);
+  }
+
 }
