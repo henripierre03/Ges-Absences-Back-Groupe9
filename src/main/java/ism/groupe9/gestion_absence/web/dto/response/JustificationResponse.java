@@ -1,6 +1,6 @@
 package ism.groupe9.gestion_absence.web.dto.response;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import lombok.Setter;
 public class JustificationResponse {
   
   private String id;
-  private Date date;
+  private LocalDateTime date;
   private String justificatif;
   private boolean validation;
 
