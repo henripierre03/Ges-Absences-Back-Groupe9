@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.data.entities.Absence;
 
-@RequestMapping("/api/absence")
+@RequestMapping("/api/web/absence")
 public interface AbsenceController {
 
   @GetMapping("")

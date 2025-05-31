@@ -20,7 +20,7 @@ public class PointageServiceImpl implements PointageService {
 
     @Override
     public List<PointageSimpleResponse> getPointagesByMatricule(String matricule, LocalDate date) {
-        List<Absence> absences = absenceRepository.findByEtudiantMatriculeAndDate(matricule, date);
+        List<Absence> absences = absenceRepository.findByEtudiantIdAndDate(matricule, date);
         return absences.stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
@@ -28,7 +28,7 @@ public class PointageServiceImpl implements PointageService {
 
     @Override
     public List<PointageSimpleResponse> getPointagesByMatricule(String matricule) {
-        List<Absence> absences = absenceRepository.findByEtudiantMatricule(matricule);
+        List<Absence> absences = absenceRepository.findByEtudiantId(matricule);
         return absences.stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());

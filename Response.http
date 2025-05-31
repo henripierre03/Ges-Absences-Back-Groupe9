@@ -1,9 +1,37 @@
-GET http://localhost:8080/api/etudiant
-
-###
-POST http://localhost:8080/api/etudiant
+POST http://localhost:8080/api/auth/login
 Accept: application/json
 Content-Type: application/json
+
+{
+    "email": "etudiant1@example.com",
+    "password": "password1"
+}
+
+# @token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDM2MjMsImV4cCI6MTc0ODY5MDAyM30.l89bwaRHgLdrHz66neauiJO2hx-3ICZtV1nFhGSsU6w
+###
+GET http://localhost:8080/api/web/etudiant
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NDI5MjQsImV4cCI6MTc0ODcyOTMyNH0.DYP5of9VgcO48IDmzcNNrMXs23x3NouXB7Zpemxe64M
+
+###
+POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDYzNjgsImV4cCI6MTc0ODY5Mjc2OH0.MjDELoQGXkZa8bArEnxeQNZfnP2dRMqweaXXl0Xdbvs
+
+{
+  "etudiantId": "etudiant1",
+  "absenceId": "absence1",
+  "date": "2023-10-01T00:00:00Z",
+  "justificatif": "FDFUDFOFOJFNLD",
+  "validation": false
+}
+
+
+###
+POST http://localhost:8080/api/web/etudiant
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic dXNlcjplM2NlNDQwZi0wMjg3LTQwZWEtYTdmZi02YzlkM2VmNWVjYzM=
 
 {
   "nom": "Test",
@@ -11,4 +39,34 @@ Content-Type: application/json
   "email": "test@example.com",
   "password": "password123",
   "role": "ADMIN"
+}
+
+
+###
+
+
+###
+GET http://localhost:8080/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg1NDcxMDMsImV4cCI6MTc0ODYzMzUwM30.8xw6S8W8m69mW2rPqn6nbL8RmWcGrhip3G0mCMf4JDQ
+
+###
+GET http://localhost:8080/api/mobile/absence/vigile/683a26cf3c3198f4349f996f
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2NTI3MDUsImV4cCI6MTc0ODczOTEwNX0.835Ss77d6Opa9uLtg1KJanzgo1wKb9zP1Sma1PjmBSI
+
+###
+
+
+GET  http://localhost:8080/api/mobile/etudiant/MATRICULE1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODY0OTUsImV4cCI6MTc0ODc3Mjg5NX0.DVmamvWA--syv-6xfpKDgaNN6dT1M2H00uHRQ-Oi6Vc
+
+###
+POST http://localhost:8080/api/mobile/etudiant/pointage
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
+
+{
+  "matricule": "MATRICULE1",
+  "vigileId": "683a26cf3c3198f4349f996d",
+  "date": "2024-03-20T08:00:00"
 }
