@@ -11,4 +11,5 @@ public interface EtudiantService {
   Etudiant getById(String id);
   Etudiant save(Etudiant etudiant);
   Etudiant getByMatricule(String matricule);
+  Etudiant pointage(String matricule);
 }
