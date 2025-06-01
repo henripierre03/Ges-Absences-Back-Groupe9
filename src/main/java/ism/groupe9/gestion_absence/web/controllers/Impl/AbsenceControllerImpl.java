@@ -3,12 +3,14 @@ package ism.groupe9.gestion_absence.web.controllers.Impl;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.web.controllers.AbsenceController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class AbsenceControllerImpl implements AbsenceController {
 
   @Override
