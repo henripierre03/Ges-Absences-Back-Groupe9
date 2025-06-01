@@ -1,4 +1,4 @@
-package ism.groupe10.gestion_absence;
+package ism.groupe9.gestion_absence;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

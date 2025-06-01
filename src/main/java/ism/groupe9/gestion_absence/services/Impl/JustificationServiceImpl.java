@@ -1,6 +1,7 @@
 package ism.groupe9.gestion_absence.services.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import ism.groupe9.gestion_absence.data.entities.Justification;
 import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.data.repositories.JustificationRepository;
 import ism.groupe9.gestion_absence.services.JustificationService;
+import ism.groupe9.gestion_absence.utils.exceptions.EntityNotFoundExceptions;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -32,8 +34,8 @@ public class JustificationServiceImpl implements JustificationService {
 
   @Override
   public Justification getByAbsence(String id) {
-    Justification justification = justificationRepository.findByAbsenceId(id);
-    return justification != null ? justification : null;
+    return Optional.ofNullable(justificationRepository.findByAbsenceId(id))
+        .orElseThrow(() -> new EntityNotFoundExceptions("Justification non trouvée pour absenceId = " + id));
   }
 
   @Override

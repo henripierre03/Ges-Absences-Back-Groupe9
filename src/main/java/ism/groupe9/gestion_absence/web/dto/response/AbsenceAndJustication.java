@@ -16,5 +16,4 @@ public class AbsenceAndJustication {
   private Date date;
   private TypeAbsence absence;
   private String justificationId;
-
 }
