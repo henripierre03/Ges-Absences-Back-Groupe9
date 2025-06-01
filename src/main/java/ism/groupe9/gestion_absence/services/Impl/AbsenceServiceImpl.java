@@ -17,8 +17,7 @@ public class AbsenceServiceImpl implements AbsenceService {
 
   @Override
   public List<Absence> getAll() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+    return absenceRepository.findAll();
   }
 
   @Override
