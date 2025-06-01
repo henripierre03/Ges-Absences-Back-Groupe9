@@ -51,7 +51,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 
 ###
 GET http://localhost:8080/api/mobile/absence/vigile/683a26cf3c3198f4349f996f
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
 
 ###
 
