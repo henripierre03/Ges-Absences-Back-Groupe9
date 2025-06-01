@@ -63,7 +63,7 @@ public class EtudiantMock implements CommandLineRunner {
             Absence savedAbsence = absenceRepository.save(absence);
 
             Justification justification = new Justification();
-            justification.setJustificatif("Justification " + j + " for Etudiant " + i);
+            justification.setMessage("Justification " + j + " for Etudiant " + i);
             justification.setDate(LocalDateTime.now());
             justification.setValidation(true);
             justification.setEtudiantId(savedEtudiant.getId());

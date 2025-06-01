@@ -1,11 +1,12 @@
 package ism.groupe9.gestion_absence.services;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
 public interface CloudnaryService {
   
-  String uploadImage(MultipartFile file) throws IOException ;
+  List<String> uploadFiles(List<MultipartFile> files) throws IOException ;
 
 }

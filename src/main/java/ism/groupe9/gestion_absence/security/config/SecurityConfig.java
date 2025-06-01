@@ -33,6 +33,7 @@ public class SecurityConfig {
         .cors(cors -> cors.disable())
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
+              "/",
                 "/api/auth/**",
                 "/api/mobile/**",
                 "/api/web/**",

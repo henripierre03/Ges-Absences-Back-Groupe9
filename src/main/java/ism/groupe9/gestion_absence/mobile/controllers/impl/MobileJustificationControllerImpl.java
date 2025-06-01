@@ -14,6 +14,7 @@ import ism.groupe9.gestion_absence.mobile.controllers.MobileJustificationControl
 import ism.groupe9.gestion_absence.mobile.dto.request.JustificationCreateRequest;
 import ism.groupe9.gestion_absence.mobile.mappers.JustificationMapper;
 import ism.groupe9.gestion_absence.services.AbsenceService;
+import ism.groupe9.gestion_absence.services.CloudnaryService;
 import ism.groupe9.gestion_absence.services.JustificationService;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
 
   private final JustificationService justificationService;
   private final AbsenceService absenceService;
+  private final CloudnaryService cloudinaryService;
   private final JustificationMapper justificationMapper;
 
   @Override

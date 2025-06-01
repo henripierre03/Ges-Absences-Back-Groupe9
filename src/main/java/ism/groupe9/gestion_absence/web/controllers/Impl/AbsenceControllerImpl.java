@@ -26,7 +26,7 @@ public class AbsenceControllerImpl implements AbsenceController {
   public ResponseEntity<Map<String, Object>> getAll() {
     var absences = absenceService.getAll();
     var absenceResponse = absences.stream()
-        .map(absenceMapper::toAbsenceAndJustification)
+        .map(absenceMapper::toAbsenceAndEtudiantResponse)
         .toList();
 
     return new ResponseEntity<>(
