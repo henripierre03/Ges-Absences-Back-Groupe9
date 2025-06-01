@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
+import ism.groupe9.gestion_absence.mobile.mappers.EtudiantMapper;
 import ism.groupe9.gestion_absence.services.EtudiantService;
 import ism.groupe9.gestion_absence.web.dto.response.AbsenceAndJustication;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Component
 @RequiredArgsConstructor
 public class AbsenceMapperManual {
-    private final EtudiantMapperMobile etudiantMapper;
+    private final EtudiantMapper etudiantMapper;
     private final EtudiantService etudiantService;
 
     public AbsenceAndJustication toAbsenceAndJustification(Absence absence) {
