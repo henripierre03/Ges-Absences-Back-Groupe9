@@ -7,6 +7,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// @SpringBootApplication
+// public class GestionAbsenceApplication {
+
+// 	public static void main(String[] args) {
+// 		SpringApplication.run(GestionAbsenceApplication.class, args);
+// 	}
+// }
+
 @SpringBootApplication
 public class GestionAbsenceApplication {
 	@Configuration
@@ -29,4 +37,4 @@ public class GestionAbsenceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionAbsenceApplication.class, args);
 	}
-};
+}

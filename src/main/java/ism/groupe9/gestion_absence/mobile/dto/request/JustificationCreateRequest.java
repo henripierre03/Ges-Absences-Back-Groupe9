@@ -1,5 +1,7 @@
 package ism.groupe9.gestion_absence.mobile.dto.request;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class JustificationCreateRequest {
   private String id;
   private String etudiantId;
   private String absenceId;
-  private Date date;
+  private LocalDateTime date;
   private String message;
   private List<String> justificatifs;
   private boolean validation;

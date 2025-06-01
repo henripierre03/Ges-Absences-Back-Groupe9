@@ -10,7 +10,7 @@ Content-Type: application/json
 # @token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2MDM2MjMsImV4cCI6MTc0ODY5MDAyM30.l89bwaRHgLdrHz66neauiJO2hx-3ICZtV1nFhGSsU6w
 ###
 GET http://localhost:8080/api/web/absence
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
 
 ###
 POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
@@ -78,3 +78,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 GET http://localhost:8080/api/web/justification/absence/683a2bab938d190c97dce745
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
 
+
+### Création d'une justification
+POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer votre_token_ici
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="justificatif.pdf"
+Content-Type: application/pdf
+
+< ./justificatif.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="etudiantId"
+
+etudiant1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="date"
+
+2024-03-20T08:00:00
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="message"
+
+Justification médicale
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="validation"
+
+false
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

@@ -35,7 +35,7 @@ public class JustificationServiceImpl implements JustificationService {
   @Override
   public Justification getByAbsence(String id) {
     return Optional.ofNullable(justificationRepository.findByAbsenceId(id))
-        .orElseThrow(() -> new EntityNotFoundExceptions("Justification non trouvée pour absenceId = " + id));
+        .orElse(null);
   }
 
   @Override

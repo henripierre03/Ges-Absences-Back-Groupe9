@@ -1,5 +1,7 @@
 package ism.groupe9.gestion_absence.mobile.dto.response;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +11,8 @@ import lombok.Setter;
 public class JustificationSimpleResponse {
 
   private String id;
-  private String justificatif;
+  private String message;
+  private boolean validation;
+  private List<String> justificatifs;
+  
 }

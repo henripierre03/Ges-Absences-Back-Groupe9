@@ -10,6 +10,7 @@ import ism.groupe9.gestion_absence.data.entities.Etudiant;
 import ism.groupe9.gestion_absence.mobile.dto.response.AbsenceAndEtudiantResponse;
 import ism.groupe9.gestion_absence.mobile.mappers.EtudiantMapper;
 import ism.groupe9.gestion_absence.services.EtudiantService;
+import ism.groupe9.gestion_absence.services.JustificationService;
 import ism.groupe9.gestion_absence.web.dto.response.AbsenceAndJustication;
 import lombok.RequiredArgsConstructor;
 
@@ -17,7 +18,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AbsenceMapperManual {
     private final EtudiantMapper etudiantMapper;
+    private final JustificationMapperMobile justificationMapper;
     private final EtudiantService etudiantService;
+    private final JustificationService justificationService;
 
     public AbsenceAndJustication toAbsenceAndJustification(Absence absence) {
         AbsenceAndJustication response = new AbsenceAndJustication();
@@ -32,11 +35,18 @@ public class AbsenceMapperManual {
 
     public AbsenceAndEtudiantResponse toAbsenceAndEtudiantResponse(Absence absence) {
         var etudiant = etudiantService.getById(absence.getEtudiantId());
-        return AbsenceAndEtudiantResponse.builder()
-                .id(absence.getId())
-                .typeAbsence(absence.getTypeAbsence())
-                .etudiant(etudiantMapper.toEtudiantAllResponse(etudiant))
-                .build();
+        var builder = AbsenceAndEtudiantResponse.builder()
+            .id(absence.getId())
+            .date(Date.from(absence.getDate().atZone(ZoneId.systemDefault()).toInstant()))
+            .typeAbsence(absence.getTypeAbsence())
+            .etudiant(etudiantMapper.toEtudiantAllResponse(etudiant));
+    
+        var justification = justificationService.getByAbsence(absence.getId());
+        if (justification != null) {
+            builder.justification(justificationMapper.toJustificationSimpleResponse(justification));
+        }
+    
+        return builder.build();
     }
 
 }

@@ -1,5 +1,6 @@
 package ism.groupe9.gestion_absence.mobile.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -27,6 +30,7 @@ public interface MobileJustificationController {
   @ApiResponse(responseCode = "201", description = "Justification creee avec succes.")
   @ApiResponse(responseCode = "400", description = "Requete invalide, les donnees fournies ne sont pas valides.")
   @ApiResponse(responseCode = "409", description = "Conflit, la justification existe deja.")
-  ResponseEntity<Map<String, Object>> create (@PathVariable String absenceId , @RequestBody JustificationCreateRequest request);
+  ResponseEntity<Map<String, Object>> create(@PathVariable String absenceId,
+      @RequestParam("files") List<MultipartFile> files, @RequestBody JustificationCreateRequest request);
 
 }
