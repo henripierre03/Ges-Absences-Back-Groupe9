@@ -3,12 +3,16 @@ package ism.groupe9.gestion_absence.data.mock;
 import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
 import ism.groupe9.gestion_absence.data.entities.Justification;
 import ism.groupe9.gestion_absence.data.entities.Vigile;
+import ism.groupe9.gestion_absence.data.enums.Filiere;
+import ism.groupe9.gestion_absence.data.enums.Niveau;
 import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import ism.groupe9.gestion_absence.data.enums.UserRole;
 import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
@@ -18,7 +22,7 @@ import ism.groupe9.gestion_absence.data.repositories.VigileRepository;
 import lombok.RequiredArgsConstructor;
 
 // @Component
-// @Order(1)
+// @Order(2)
 @RequiredArgsConstructor
 public class EtudiantMock implements CommandLineRunner {
 
@@ -37,6 +41,9 @@ public class EtudiantMock implements CommandLineRunner {
       etudiant.setPrenom("Prenom " + i);
       etudiant.setEmail("etudiant" + i + "@example.com");
       etudiant.setMatricule("MATRICULE" + i);
+      etudiant.setFiliere(Filiere.GLRS);
+      etudiant.setAnneesScolaires(null);
+      etudiant.setNiveau(Niveau.L3);
       etudiant.setArePayed(true);
       etudiant.setPassword(passwordEncoder.encode("password" + i));
       etudiant.setRole(UserRole.ETUDIANT);
@@ -63,6 +70,7 @@ public class EtudiantMock implements CommandLineRunner {
 
             Justification justification = new Justification();
             justification.setMessage("Justification " + j + " for Etudiant " + i);
+            justification.setJustificatifs(null);
             justification.setDate(LocalDateTime.now());
             justification.setValidation(true);
             justification.setEtudiantId(savedEtudiant.getId());

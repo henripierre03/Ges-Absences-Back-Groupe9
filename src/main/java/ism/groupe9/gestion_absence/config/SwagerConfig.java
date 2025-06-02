@@ -1,4 +1,4 @@
-package ism.groupe9.config;
+package ism.groupe9.gestion_absence.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

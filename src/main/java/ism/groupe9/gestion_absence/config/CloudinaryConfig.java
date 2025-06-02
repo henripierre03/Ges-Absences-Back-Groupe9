@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.security.config;
+package ism.groupe9.gestion_absence.config;
 
 import java.util.HashMap;
 import java.util.Map;

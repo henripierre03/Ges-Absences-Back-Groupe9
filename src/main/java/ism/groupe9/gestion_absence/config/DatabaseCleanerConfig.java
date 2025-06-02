@@ -1,4 +1,4 @@
-package ism.groupe9.config;
+package ism.groupe9.gestion_absence.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-@Configuration
-@Component
+// @Configuration
+// @Component
 public class DatabaseCleanerConfig {
 
     @Autowired
