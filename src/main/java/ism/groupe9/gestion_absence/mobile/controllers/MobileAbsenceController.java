@@ -29,7 +29,7 @@ public interface MobileAbsenceController {
   @ApiResponse(responseCode = "404", description = "Aucune absence trouvée pour cet étudiant.")
   ResponseEntity<Map<String, Object>> getAbsencesByEtudiantId(@PathVariable String id);
 
-  @PostMapping("")
+  @PostMapping("/create")
   @Operation(summary = "Créer une nouvelle absence", description = "Cette méthode permet de créer une nouvelle absence.")
   @ApiResponse(responseCode = "201", description = "Absence créée avec succès.")
   @ApiResponse(responseCode = "400", description = "Requête invalide, les données fournies ne sont pas valides.")
