@@ -6,29 +6,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-// @SpringBootApplication
-// public class GestionAbsenceApplication {
-
-// 	public static void main(String[] args) {
-// 		SpringApplication.run(GestionAbsenceApplication.class, args);
-// 	}
-// }
+import org.springframework.lang.NonNull;
 
 @SpringBootApplication
 public class GestionAbsenceApplication {
+
 	@Configuration
 	public class CorsConfig {
 		@Bean
 		public WebMvcConfigurer corsConfigurer() {
 			return new WebMvcConfigurer() {
-				@Override
-				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/") // Autoriser toutes les routes
-							.allowedOrigins("http://localhost:4200") // Autoriser Angular (changer si besoin)
-							.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+				public void addCorsMappings(@NonNull CorsRegistry registry) {
+					registry.addMapping("/**") // Autoriser toutes les routes (/** au lieu de /)
+							.allowedOriginPatterns("*") // Autoriser tous les origins (pour Flutter mobile)
+							.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
 							.allowedHeaders("*")
-							.allowCredentials(true);
+							.allowCredentials(false) // Mettre à false pour allowedOriginPatterns("*")
+							.maxAge(3600); // Cache preflight pendant 1 heure
 				}
 			};
 		}
