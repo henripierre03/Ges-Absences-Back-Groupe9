@@ -1,4 +1,4 @@
-package ism.groupe9.config;
+package ism.groupe9.gestion_absence.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
