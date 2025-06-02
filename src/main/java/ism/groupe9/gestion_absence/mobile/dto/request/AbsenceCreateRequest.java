@@ -12,13 +12,10 @@ import lombok.Setter;
 @Schema(description = "Représente une requête pour créer une absence d'un étudiant.")
 
 public class AbsenceCreateRequest {
-
-  private String id;
   private String etudiantId;
   private String vigileId;
   private LocalDateTime date;
   private TypeAbsence typeAbsence;
   private String justificationId;
   private String courId;
-
 }
