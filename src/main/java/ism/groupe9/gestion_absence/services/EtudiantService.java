@@ -17,7 +17,7 @@ public interface EtudiantService {
 
   Etudiant getByMatricule(String matricule);
 
-  Etudiant pointage(String matricule);
+  // Etudiant pointage(String matricule);
 
   DetailCour getProchainCoursAujourdHui(String matricule);
 }

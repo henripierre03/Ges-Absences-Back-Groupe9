@@ -1,5 +1,7 @@
 package ism.groupe9.gestion_absence.mobile.controllers.impl;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -12,8 +14,8 @@ import ism.groupe9.gestion_absence.data.entities.User;
 import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import ism.groupe9.gestion_absence.mobile.controllers.MobileEtudiantController;
 import ism.groupe9.gestion_absence.mobile.dto.request.PointageRequest;
-import ism.groupe9.gestion_absence.mobile.mappers.AbsenceMapperManuel;
-import ism.groupe9.gestion_absence.mobile.mappers.EtudiantMapper;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileAbsenceMapperManuel;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileEtudiantMapper;
 import ism.groupe9.gestion_absence.services.AbsenceService;
 import ism.groupe9.gestion_absence.services.EtudiantService;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
@@ -25,8 +27,8 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
 
   private final EtudiantService etudiantService;
   private final AbsenceService absenceService;
-  private final EtudiantMapper etudiantMapper;
-  private final AbsenceMapperManuel absenceMapper;
+  private final MobileEtudiantMapper etudiantMapper;
+  private final MobileAbsenceMapperManuel absenceMapper;
 
   @Override
   public ResponseEntity<Map<String, Object>> getAll(User userConnect) {
@@ -52,6 +54,8 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
 
   }
 
+  int TOLERANCE_RETARD_MINUTES = 15;
+
   @Override
   public ResponseEntity<Map<String, Object>> pointageEtudiant(PointageRequest request) {
 
@@ -62,6 +66,7 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
           HttpStatus.NOT_FOUND);
     }
     DetailCour prochainCours = etudiantService.getProchainCoursAujourdHui(request.getMatricule());
+
     boolean dejaPointe = absenceService.getByEtudiantId(etudiant.getId()).stream()
         .anyMatch(a -> a.getDate().equals(prochainCours.getDate()) && a.getTypeAbsence() == TypeAbsence.PRESENCE);
 
@@ -76,7 +81,13 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
     absence.setVigileId(request.getVigileId());
     absence.setDate(prochainCours.getDate());
     absence.setCourId(prochainCours.getId());
-    absence.setTypeAbsence(TypeAbsence.PRESENCE);
+
+    var heureDebut = prochainCours.getHeureDebut();
+    // var heureFin = prochainCours.getHeureFin();
+    var minutesRetard = calculerMinutesRetard(heureDebut, LocalTime.now());
+    absence.setTypeAbsence(determinerTypeAbsence(minutesRetard));
+
+    // absence.setTypeAbsence(TypeAbsence.PRESENCE);
 
     var savedAbsence = absenceService.save(absence);
 
@@ -85,5 +96,20 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
             absenceMapper.toAbsenceAndEtudiantResponse(savedAbsence),
             "absenceSimpleResponse"),
         HttpStatus.CREATED);
+  }
+
+  private int calculerMinutesRetard(LocalTime heureDebut, LocalTime heureArrivee) {
+    if (heureArrivee.isBefore(heureDebut) || heureArrivee.equals(heureDebut)) {
+      return 0;
+    }
+    return (int) Duration.between(heureDebut, heureArrivee).toMinutes();
+  }
+
+  private TypeAbsence determinerTypeAbsence(int minutesRetard) {
+    if (minutesRetard <= TOLERANCE_RETARD_MINUTES) {
+      return TypeAbsence.PRESENCE;
+    } else {
+      return TypeAbsence.RETARD;
+    }
   }
 }

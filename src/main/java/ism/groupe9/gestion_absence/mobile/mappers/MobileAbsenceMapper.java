@@ -10,7 +10,7 @@ import ism.groupe9.gestion_absence.mobile.dto.response.AbsenceSimpleResponse;
 import ism.groupe9.gestion_absence.mobile.dto.response.EtudiantAllResponse;
 
 @Mapper(componentModel = "spring")
-public interface AbsenceMapper {
+public interface MobileAbsenceMapper {
 
   Absence toEntity(AbsenceCreateRequest absenceCreateRequest);
 

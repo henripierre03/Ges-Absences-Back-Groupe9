@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.mobile.controllers.MobileAbsenceController;
 import ism.groupe9.gestion_absence.mobile.dto.request.AbsenceCreateRequest;
-import ism.groupe9.gestion_absence.mobile.mappers.AbsenceMapper;
-import ism.groupe9.gestion_absence.mobile.mappers.AbsenceMapperManuel;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileAbsenceMapper;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileAbsenceMapperManuel;
 import ism.groupe9.gestion_absence.services.AbsenceService;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +20,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MobileAbsenceControllerImpl implements MobileAbsenceController {
 
-  private final AbsenceMapper absenceMapper;
+  private final MobileAbsenceMapper absenceMapper;
   private final AbsenceService absenceService;
-  private final AbsenceMapperManuel absenceMapperManuel;
+  private final MobileAbsenceMapperManuel absenceMapperManuel;
 
   @Override
   public ResponseEntity<Map<String, Object>> getAll() {
@@ -59,10 +59,11 @@ public class MobileAbsenceControllerImpl implements MobileAbsenceController {
     List<Absence> absences = absenceService.getByEtudiant(id);
 
     if (absences.isEmpty()) {
-      return ResponseEntity.status(404).body(Map.of("message", "Aucune absence trouvée pour cet étudiant."));
+      return new ResponseEntity<>(
+          RestResponse.response(HttpStatus.NOT_FOUND, "Aucune absence trouvée pour cet étudiant", "string"),
+          HttpStatus.NOT_FOUND);
     }
 
-    // return ResponseEntity.ok(Map.of("absences", absences));
     var absencesResponse = absences.stream()
         .map(absenceMapper::toAbsenceSimpleResponse)
         .toList();

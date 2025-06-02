@@ -16,7 +16,7 @@ import ism.groupe9.gestion_absence.data.entities.Justification;
 import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import ism.groupe9.gestion_absence.mobile.controllers.MobileJustificationController;
 import ism.groupe9.gestion_absence.mobile.dto.request.JustificationCreateRequest;
-import ism.groupe9.gestion_absence.mobile.mappers.JustificationMapper;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileJustificationMapper;
 import ism.groupe9.gestion_absence.services.AbsenceService;
 import ism.groupe9.gestion_absence.services.CloudnaryService;
 import ism.groupe9.gestion_absence.services.JustificationService;
@@ -30,7 +30,7 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
   private final JustificationService justificationService;
   private final AbsenceService absenceService;
   private final CloudnaryService cloudinaryService;
-  private final JustificationMapper justificationMapper;
+  private final MobileJustificationMapper justificationMapper;
 
   @Override
   public ResponseEntity<Map<String, Object>> getByAbsenceId(String absenceId) {

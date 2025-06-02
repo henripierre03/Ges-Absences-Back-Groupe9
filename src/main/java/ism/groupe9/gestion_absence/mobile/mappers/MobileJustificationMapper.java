@@ -7,7 +7,7 @@ import ism.groupe9.gestion_absence.mobile.dto.request.JustificationCreateRequest
 import ism.groupe9.gestion_absence.mobile.dto.response.JustificationSimpleResponse;
 
 @Mapper(componentModel = "spring")
-public interface JustificationMapper {
+public interface MobileJustificationMapper {
 
   Justification toEntity(JustificationCreateRequest justificationCreateRequest);
 

@@ -9,9 +9,9 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class AbsenceMapperManuel {
+public class MobileAbsenceMapperManuel {
   private final EtudiantService etudiantService;
-  private final EtudiantMapper etudiantMapper;
+  private final MobileEtudiantMapper etudiantMapper;
 
   public AbsenceAndEtudiantResponse toAbsenceAndEtudiantResponse(Absence absence) {
     var etudiant = etudiantService.getById(absence.getEtudiantId());

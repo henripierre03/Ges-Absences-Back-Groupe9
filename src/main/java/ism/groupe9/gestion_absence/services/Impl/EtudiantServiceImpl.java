@@ -62,48 +62,63 @@ public class EtudiantServiceImpl implements EtudiantService {
     return etudiantRepository.findByMatricule(matricule);
   }
 
-  @Override
-  public Etudiant pointage(String matricule) {
-    var etudiant = etudiantRepository.findByMatricule(matricule);
-    if (etudiant == null) {
-      throw new RuntimeException("Etudiant not found with matricule: " + matricule);
-    }
-    DetailCour prochainCours = this.getProchainCoursAujourdHui(matricule);
-    var cours = courRepository.findAll();
-    List<DetailCour> detailCours = new ArrayList<>();
-    for (Cours cour : cours) {
-      for (DetailCour detailCour : cour.getDetailCours()) {
-        if (detailCour.getDate().toLocalDate().equals(LocalDateTime.now().toLocalDate())) {
-          if(detailCour.getClasseId().equals(etudiant.getClasseId())){
-            detailCours.add(detailCour);
-          }
-        }
-      }
-    }
+  // @Override
+  // public Etudiant pointage(String matricule) {
+  //   var etudiant = etudiantRepository.findByMatricule(matricule);
+  //   if (etudiant == null) {
+  //     throw new RuntimeException("Etudiant not found with matricule: " + matricule);
+  //   }
+  //   DetailCour prochainCours = this.getProchainCoursAujourdHui(matricule);
+  //   var cours = courRepository.findAll();
+  //   List<DetailCour> detailCours = new ArrayList<>();
+  //   for (Cours cour : cours) {
+  //     for (DetailCour detailCour : cour.getDetailCours()) {
+  //       if (detailCour.getDate().toLocalDate().equals(LocalDateTime.now().toLocalDate())) {
+  //         if(detailCour.getClasseId().equals(etudiant.getClasseId())){
+  //           detailCours.add(detailCour);
+  //         }
+  //       }
+  //     }
+  //   }
     
 
-    return etudiant;
+  //   return etudiant;
 
-  }
+  // }
 
 
+
+  @Override 
   public DetailCour getProchainCoursAujourdHui(String matricule) {
     Etudiant etudiant = etudiantRepository.findByMatricule(matricule);
     if (etudiant == null) {
-      throw new RuntimeException("Étudiant introuvable avec le matricule: " + matricule);
+        throw new RuntimeException("Étudiant introuvable avec le matricule: " + matricule);
     }
-  
-    LocalDateTime now = LocalDateTime.now();
-    LocalDate today = now.toLocalDate();
-  
-    return courRepository.findAll().stream()
-      .flatMap(c -> c.getDetailCours().stream())
-      .filter(dc -> dc.getDate().toLocalDate().equals(today))
-      .filter(dc -> dc.getClasseId().equals(etudiant.getClasseId()))
-      .filter(dc -> dc.getDate().isAfter(now))
-      .sorted(Comparator.comparing(DetailCour::getDate))
-      .findFirst()
-      .orElseThrow(() -> new RuntimeException("Aucun cours à venir aujourd’hui pour cette classe."));
-  }
+
+    LocalDateTime maintenant = LocalDateTime.now();
+    LocalDate aujourdhui = maintenant.toLocalDate();
+
+    List<Cours> allCours = courRepository.findAll();
+    
+    List<DetailCour> coursValides = new ArrayList<>();
+
+    for (Cours cours : allCours) {
+        for (DetailCour detailCours : cours.getDetailCours()) {
+            if (detailCours.getDate().toLocalDate().equals(aujourdhui) &&
+                detailCours.getClasseId().equals(etudiant.getClasseId()) &&
+                detailCours.getDate().isAfter(maintenant)) {
+                
+                coursValides.add(detailCours);
+            }
+        }
+    }
+    if (coursValides.isEmpty()) {
+        throw new RuntimeException("Aucun cours à venir aujourd'hui pour cette classe.");
+    }
+    
+    // Trier les cours par heure
+    coursValides.sort((cours1, cours2) -> cours1.getDate().compareTo(cours2.getDate()));
+    return coursValides.get(0);
+}
   
 }

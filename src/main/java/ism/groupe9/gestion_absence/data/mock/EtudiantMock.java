@@ -3,9 +3,7 @@ package ism.groupe9.gestion_absence.data.mock;
 import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
@@ -39,6 +37,7 @@ public class EtudiantMock implements CommandLineRunner {
       etudiant.setPrenom("Prenom " + i);
       etudiant.setEmail("etudiant" + i + "@example.com");
       etudiant.setMatricule("MATRICULE" + i);
+      etudiant.setArePayed(true);
       etudiant.setPassword(passwordEncoder.encode("password" + i));
       etudiant.setRole(UserRole.ETUDIANT);
 

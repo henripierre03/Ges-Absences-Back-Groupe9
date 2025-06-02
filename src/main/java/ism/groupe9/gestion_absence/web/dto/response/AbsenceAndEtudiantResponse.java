@@ -1,4 +1,4 @@
-package ism.groupe9.gestion_absence.mobile.dto.response;
+package ism.groupe9.gestion_absence.web.dto.response;
 
 import java.util.Date;
 
@@ -19,4 +19,5 @@ public class AbsenceAndEtudiantResponse {
   private TypeAbsence typeAbsence;
   private String courId;
   private EtudiantAllResponse etudiant;
+  private JustificationSimpleResponse justification;
 }

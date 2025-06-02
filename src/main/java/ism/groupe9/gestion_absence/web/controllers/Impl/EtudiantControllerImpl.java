@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
-import ism.groupe9.gestion_absence.mobile.mappers.EtudiantMapper;
+import ism.groupe9.gestion_absence.mobile.mappers.MobileEtudiantMapper;
 import ism.groupe9.gestion_absence.services.EtudiantService;
 import ism.groupe9.gestion_absence.web.controllers.EtudiantController;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class EtudiantControllerImpl implements EtudiantController {
 
   private final EtudiantService etudiantService;
-  private final EtudiantMapper etudiantMapper;
+  private final MobileEtudiantMapper etudiantMapper;
 
   @Override
   public ResponseEntity<Map<String, Object>> getAll() {
