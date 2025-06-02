@@ -9,4 +9,5 @@ public interface EtudiantRepository extends MongoRepository<Etudiant,String> {
   
   Etudiant findByMatricule(String matricule);
   Etudiant findByEmail(String email);
+  List<Etudiant> findByClasseId(String classeId);
 }
