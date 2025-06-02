@@ -3,6 +3,7 @@ package ism.groupe9.gestion_absence.mobile.controllers.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,15 +48,14 @@ public class MobileAbsenceControllerImpl implements MobileAbsenceController {
     Map<String, Object> response = new HashMap<>();
 
     try {
-      if (absenceRequest.getEtudiantId() == null || absenceRequest.getDate() == null
-          || absenceRequest.getCourId() == null) {
+      if (absenceRequest.getEtudiantId() == null || absenceRequest.getDate() == null) {
         response.put("message", "Les champs obligatoires sont manquants");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
       }
       List<Absence> existing = absenceService.getByEtudiantId(absenceRequest.getEtudiantId());
       boolean absenceExists = existing.stream()
           .anyMatch(a -> a.getDate().toLocalDate().equals(absenceRequest.getDate().toLocalDate())
-              && a.getCourId().equals(absenceRequest.getCourId()));
+              && Objects.equals(a.getCourId(), absenceRequest.getCourId()));
       if (absenceExists) {
         response.put("message", "Cette absence existe déjà.");
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
