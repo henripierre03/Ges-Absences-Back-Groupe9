@@ -15,7 +15,7 @@ public class JustificationMapperManuelle {
   private final EtudiantService etudiantService;
   private final AbsenceService absenceService;
   private final AbsenceMapperManual absenceMapper;
-  private final EtudiantMapper etudiantMapper;
+  private final EtudiantMapperManual etudiantMapper;
 
   public JustificationResponse toJustificationResponse(Justification justification) {
     if (justification == null) {

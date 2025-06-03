@@ -83,12 +83,12 @@ public class EtudiantMock implements CommandLineRunner {
           Absence absence = new Absence();
           absence.setEtudiantId(savedEtudiant.getId());
           absence.setDate(LocalDateTime.now());
+          Cours cours = allCours.get(j % vigiles.size());
+          absence.setCourId(cours.getId());
 
           if (j % 2 == 0) {
 
             absence.setTypeAbsence(TypeAbsence.ABSENCE);
-            Cours cours = allCours.get(j % vigiles.size());
-            absence.setCourId(cours.getId());
 
             // 3. Sauve l'absence AVANT d'associer la justification
             Absence savedAbsence = absenceRepository.save(absence);

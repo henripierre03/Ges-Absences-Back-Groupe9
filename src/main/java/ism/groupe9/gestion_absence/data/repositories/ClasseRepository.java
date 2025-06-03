@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import ism.groupe9.gestion_absence.data.entities.Classe;
 
 public interface ClasseRepository extends MongoRepository<Classe, String> {
-  
+
 }

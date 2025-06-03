@@ -15,8 +15,8 @@ public class EtudiantAllResponse {
   private String id;
   private String nom;
   private String prenom;
+  private String matricule;
   private String email;
-  private String password;
   private UserRole role;
   private Filiere filiere;
   private Niveau niveau;

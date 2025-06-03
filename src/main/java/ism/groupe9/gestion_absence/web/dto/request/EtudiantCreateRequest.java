@@ -24,6 +24,7 @@ public class EtudiantCreateRequest {
   private String matricule;
   private Niveau niveau;
   private String classeId;
+  private boolean arePayed;
   private List<Absence> absences;
 
 }
