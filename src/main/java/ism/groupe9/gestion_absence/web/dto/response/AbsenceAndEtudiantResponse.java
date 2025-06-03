@@ -17,8 +17,8 @@ public class AbsenceAndEtudiantResponse {
   private String id;
   private Date date;
   private TypeAbsence typeAbsence;
-  private String courId;
+  private CourSimpleResponse cour;
   private EtudiantAllResponse etudiant;
   private JustificationSimpleResponse justification;
-  private CourSimpleResponse cour;
+  
 }
