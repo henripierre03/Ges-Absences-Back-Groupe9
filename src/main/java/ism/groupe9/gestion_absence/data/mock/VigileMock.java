@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ism.groupe9.gestion_absence.data.entities.Vigile;
 import ism.groupe9.gestion_absence.data.enums.UserRole;
@@ -18,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class VigileMock implements CommandLineRunner {
 
   private final VigileRepository vigileRepository;
+  private final PasswordEncoder passwordEncoder;
 
   @Override
   public void run(String... args) throws Exception {
@@ -28,7 +28,7 @@ public class VigileMock implements CommandLineRunner {
       vigile.setEmail("vigile" + i + "@example.com");
       vigile.setNom("Vigile " + i);
       vigile.setPrenom("Prenom " + i);
-      vigile.setPassword("password" + i);
+      vigile.setPassword(passwordEncoder.encode("password" + i));
       vigile.setRole(UserRole.VIGILE);
       vigiles.add(vigile);
     }

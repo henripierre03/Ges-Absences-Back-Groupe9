@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,12 @@ public interface MobileJustificationController {
   @ApiResponse(responseCode = "201", description = "Justification creee avec succes.")
   @ApiResponse(responseCode = "400", description = "Requete invalide, les donnees fournies ne sont pas valides.")
   @ApiResponse(responseCode = "409", description = "Conflit, la justification existe deja.")
-  ResponseEntity<Map<String, Object>> create(@PathVariable String absenceId,
-      @RequestParam("files") List<MultipartFile> files, @RequestBody JustificationCreateRequest request);
+  ResponseEntity<Map<String, Object>> create(
+    @PathVariable String absenceId,
+    @RequestParam("files") List<MultipartFile> files,
+    @RequestParam("etudiantId") String etudiantId,
+    @RequestParam("message") String message,
+    @RequestParam(value = "validation", defaultValue = "false") boolean validation
+);
 
 }

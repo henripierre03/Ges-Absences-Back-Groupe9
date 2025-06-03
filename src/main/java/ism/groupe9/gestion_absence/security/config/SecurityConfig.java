@@ -38,6 +38,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/",
+                "/api/qrcode/**",
                 "/api/auth/**",
                 "/api/mobile/**",
                 "/api/web/**",

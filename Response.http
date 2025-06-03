@@ -63,11 +63,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 POST http://localhost:8080/api/mobile/etudiant/pointage
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
 
 {
   "matricule": "MATRICULE1",
-  "vigileId": "683a26cf3c3198f4349f996d",
+  "vigileId": "683e57d89711ca10064cec21",
   "date": "2024-03-20T08:00:00"
 }
 
@@ -77,14 +77,13 @@ GET http://localhost:8080/api/web/absence
 # Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
 
 ###
-GET http://localhost:8080/api/web/justification/absence/683e57e29711ca10064cec6a
+GET http://localhost:8080/api/web/justification/absence/683ee0c121e9036d8cb0f3b6
 # Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg3Njk2OTAsImV4cCI6MTc0ODg1NjA5MH0.j4JGUQr-0ob0UJVJtVhErx5bUcjmpK3Le6UMJnqz4UY
 
 
 ### Création d'une justification
-POST http://localhost:8080/api/mobile/justification/absence/68399c4b6c34218f5d7406f4
+POST http://localhost:8080/api/mobile/justification/absence/683ee0c121e9036d8cb0f3b6
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer votre_token_ici
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="files"; filename="justificatif.pdf"
@@ -94,7 +93,7 @@ Content-Type: application/pdf
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="etudiantId"
 
-etudiant1
+683ee0c121e9036d8cb0f3b1
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="date"
 
@@ -109,3 +108,5 @@ Content-Disposition: form-data; name="validation"
 false
 ------WebKitFormBoundary7MA4YWxkTrZu0gW-- 
 
+###
+GET http://localhost:8080/api/qrcode/MATRICULE2

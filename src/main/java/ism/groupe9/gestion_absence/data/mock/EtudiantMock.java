@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.AnneeScolaire;
+import ism.groupe9.gestion_absence.data.entities.Classe;
 import ism.groupe9.gestion_absence.data.entities.Cours;
 import ism.groupe9.gestion_absence.data.entities.Etudiant;
 import ism.groupe9.gestion_absence.data.entities.Justification;
@@ -21,6 +21,7 @@ import ism.groupe9.gestion_absence.data.enums.TypeAbsence;
 import ism.groupe9.gestion_absence.data.enums.UserRole;
 import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.data.repositories.AnneeScolaireRepository;
+import ism.groupe9.gestion_absence.data.repositories.ClasseRepository;
 import ism.groupe9.gestion_absence.data.repositories.CourRepository;
 import ism.groupe9.gestion_absence.data.repositories.EtudiantRepository;
 import ism.groupe9.gestion_absence.data.repositories.JustificationRepository;
@@ -38,12 +39,14 @@ public class EtudiantMock implements CommandLineRunner {
   private final VigileRepository vigileRepository;
   private final PasswordEncoder passwordEncoder;
   private final CourRepository courRepository;
+  private final ClasseRepository classRepository;
   private final AnneeScolaireRepository anneeScolaireRepository;
 
   @Override
   public void run(String... args) throws Exception {
 
     List<Cours> allCours = courRepository.findAll();
+    var classes = classRepository.findAll();
     ;
     List<AnneeScolaire> anneesScolaires = anneeScolaireRepository.findAll();
 
@@ -58,6 +61,9 @@ public class EtudiantMock implements CommandLineRunner {
       etudiant.setArePayed(true);
       etudiant.setPassword(passwordEncoder.encode("password" + i));
       etudiant.setRole(UserRole.ETUDIANT);
+      Classe classe = classes.get(i % classes.size());
+
+      etudiant.setClasseId(classe.getId());
 
       // Ajout des années scolaires
       List<AnneeScolaire> anneesEtudiant = new ArrayList<>();
@@ -72,37 +78,44 @@ public class EtudiantMock implements CommandLineRunner {
       var vigiles = vigileRepository.findAll();
       // 2. Ensuite, gère ses absences
       if (i % 2 == 0) {
-        for (int j = 1; j <= 2; j++) {
+        for (int j = 1; j <= 4; j++) {
 
           Absence absence = new Absence();
           absence.setEtudiantId(savedEtudiant.getId());
           absence.setDate(LocalDateTime.now());
 
           if (j % 2 == 0) {
-            Vigile vigile = vigiles.get(j % vigiles.size());
 
-            absence.setTypeAbsence(TypeAbsence.PRESENCE);
-            absence.setVigileId(vigile.getId());
+            absence.setTypeAbsence(TypeAbsence.ABSENCE);
             Cours cours = allCours.get(j % vigiles.size());
             absence.setCourId(cours.getId());
 
             // 3. Sauve l'absence AVANT d'associer la justification
             Absence savedAbsence = absenceRepository.save(absence);
 
-            Justification justification = new Justification();
-            justification.setMessage("Justification " + j + " for Etudiant " + i);
-            justification.setJustificatifs(null);
-            justification.setDate(LocalDateTime.now());
-            justification.setValidation(true);
-            justification.setEtudiantId(savedEtudiant.getId());
-            justification.setAbsenceId(savedAbsence.getId());
+            if (j == 2) {
+              Justification justification = new Justification();
+              justification.setMessage("Justification " + j + " for Etudiant " + i);
+              justification.setJustificatifs(null);
+              justification.setDate(LocalDateTime.now());
+              justification.setValidation(true);
+              justification.setEtudiantId(savedEtudiant.getId());
+              justification.setAbsenceId(savedAbsence.getId());
 
-            Justification savedJustification = justificationRepository.save(justification);
+              Justification savedJustification = justificationRepository.save(justification);
+              savedAbsence.setJustificationId(savedJustification.getId());
+              absenceRepository.save(savedAbsence);
+            } else {
+              // Si pas de justification, on met l'ID à null
+              savedAbsence.setJustificationId(null);
+              absenceRepository.save(savedAbsence);
+            }
 
             // 4. Mise à jour de l'absence avec la justification
-            savedAbsence.setJustificationId(savedJustification.getId());
-            absenceRepository.save(savedAbsence);
+
           } else {
+            Vigile vigile = vigiles.get(j % vigiles.size());
+            absence.setVigileId(vigile.getId());
             absence.setTypeAbsence(TypeAbsence.PRESENCE);
             absence.setJustificationId(null);
             absenceRepository.save(absence);

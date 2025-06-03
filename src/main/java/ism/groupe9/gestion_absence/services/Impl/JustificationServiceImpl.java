@@ -38,16 +38,20 @@ public class JustificationServiceImpl implements JustificationService {
         .orElse(null);
   }
 
-  @Override
-  public Justification create(Justification justification) {
-
+@Override
+public Justification create(Justification justification) {
+    // Vérifier si l'absence existe
     Absence absence = absenceRepository.findById(justification.getAbsenceId())
-        .orElse(null);
-    if (absence == null) {
-      return justificationRepository.save(justification);
-    }
-    throw new IllegalArgumentException("cette absence a déjà une justification");
+        .orElseThrow(() -> new IllegalArgumentException("Absence non trouvée"));
 
-  }
+    // Vérifier si une justification existe déjà pour cette absence
+    Justification existingJustification = getByAbsence(justification.getAbsenceId());
+    if (existingJustification != null) {
+        throw new IllegalArgumentException("Cette absence a déjà une justification");
+    }
+
+    // Sauvegarder la nouvelle justification
+    return justificationRepository.save(justification);
+}
 
 }
