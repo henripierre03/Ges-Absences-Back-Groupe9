@@ -11,6 +11,7 @@ import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.data.repositories.JustificationRepository;
 import ism.groupe9.gestion_absence.services.JustificationService;
 import ism.groupe9.gestion_absence.utils.exceptions.EntityNotFoundExceptions;
+import ism.groupe9.gestion_absence.web.dto.request.JustificationUpdateRequest;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -52,6 +53,17 @@ public Justification create(Justification justification) {
 
     // Sauvegarder la nouvelle justification
     return justificationRepository.save(justification);
+}
+
+@Override
+public Justification update(String id, JustificationUpdateRequest justification) {
+  var existingJustification = justificationRepository.findById(id);
+  if (!existingJustification.isPresent()) {
+    throw new EntityNotFoundExceptions("Justification not found with id: " + id);
+  }
+  existingJustification.get().setValidation(justification.isValidation());
+  return justificationRepository.save(existingJustification.get());
+      
 }
 
 }

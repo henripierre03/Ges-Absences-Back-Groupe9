@@ -23,7 +23,8 @@ public class AbsenceMapperManual {
   private final EtudiantService etudiantService;
   private final JustificationService justificationService;
   private final CourService courService;
-  private final CourMapper courMapper;
+  private final CourMapperManual courMapper;
+  private final CourMapper courMapper2;
 
   public AbsenceAndJustication toAbsenceAndJustification(Absence absence) {
     AbsenceAndJustication response = new AbsenceAndJustication();
@@ -47,6 +48,10 @@ public class AbsenceMapperManual {
     var justification = justificationService.getByAbsence(absence.getId());
     if (justification != null) {
       builder.justification(justificationMapper.toJustificationSimpleResponse(justification));
+    }
+    var cour = courService.getById(absence.getCourId());
+    if (cour != null) {
+      builder.cour(courMapper2.toCourSimpleResponse(cour));
     }
 
     return builder.build();

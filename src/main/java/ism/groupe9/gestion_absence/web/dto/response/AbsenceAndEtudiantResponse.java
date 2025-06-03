@@ -20,4 +20,5 @@ public class AbsenceAndEtudiantResponse {
   private String courId;
   private EtudiantAllResponse etudiant;
   private JustificationSimpleResponse justification;
+  private CourSimpleResponse cour;
 }

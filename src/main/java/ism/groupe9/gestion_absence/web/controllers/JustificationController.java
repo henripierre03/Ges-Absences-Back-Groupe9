@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ism.groupe9.gestion_absence.data.entities.Justification;
+import ism.groupe9.gestion_absence.web.dto.request.JustificationUpdateRequest;
 
 @RequestMapping("/api/web/justification")
 public interface JustificationController {
@@ -33,5 +34,5 @@ public interface JustificationController {
   @ApiResponse(responseCode = "200", description = "Justification validée avec succès.")
   @ApiResponse(responseCode = "404", description = "Justification non trouvée ou déjà validée.")
   @ApiResponse(responseCode = "400", description = "Requête invalide, les données fournies ne sont pas valides.")
-  ResponseEntity<Map<String, Object>> validationJustification(@PathVariable() String id, @RequestBody Justification justification);
+  ResponseEntity<Map<String, Object>> validationJustification(@PathVariable() String id, @RequestBody JustificationUpdateRequest justification);
 }
