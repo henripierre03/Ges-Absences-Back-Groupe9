@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AbsenceMapperManual {
   private final EtudiantMapper etudiantMapper;
-  private final JustificationMapperMobile justificationMapper;
+  private final JustificationMapper justificationMapper;
   private final EtudiantService etudiantService;
   private final JustificationService justificationService;
 

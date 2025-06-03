@@ -3,6 +3,8 @@ package ism.groupe9.gestion_absence.services.Impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.entities.Cours;
 import ism.groupe9.gestion_absence.data.entities.DetailCour;
@@ -15,6 +17,7 @@ import ism.groupe9.gestion_absence.services.CourService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Service
 public class CourServiceImpl implements CourService {
 
   private final CourRepository courRepository;
