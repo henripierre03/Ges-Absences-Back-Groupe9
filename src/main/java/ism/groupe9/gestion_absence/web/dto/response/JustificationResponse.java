@@ -19,5 +19,6 @@ public class JustificationResponse {
   private List<String> justificatifs;
   private boolean validation;
   private EtudiantSimpleResponse etudiant;
+  private AbsenceSimpleResponse absence;
 
 }

@@ -3,6 +3,7 @@ package ism.groupe9.gestion_absence.web.mappers;
 import org.springframework.stereotype.Component;
 
 import ism.groupe9.gestion_absence.data.entities.Justification;
+import ism.groupe9.gestion_absence.services.AbsenceService;
 import ism.groupe9.gestion_absence.services.EtudiantService;
 import ism.groupe9.gestion_absence.web.dto.response.JustificationResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class JustificationMapperManuelle {
 
   private final EtudiantService etudiantService;
+  private final AbsenceService absenceService;
+  private final AbsenceMapperManual absenceMapper;
   private final EtudiantMapper etudiantMapper;
 
   public JustificationResponse toJustificationResponse(Justification justification) {
@@ -27,6 +30,8 @@ public class JustificationMapperManuelle {
         .validation(justification.isValidation())
         .etudiant(etudiantMapper.toEtudiantSimpleResponse(
             etudiantService.getById(justification.getEtudiantId())))
+        .absence(absenceMapper.toAbsenceSimpleResponse(
+            absenceService.getById(justification.getAbsenceId())))
         .build();
 
   }

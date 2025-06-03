@@ -11,4 +11,6 @@ public interface CourService {
   List<Cours> getCoursTerminer(LocalDateTime maintenant, String classeId);
 
   void marquerAbsencesPourCoursTermines(LocalDateTime maintenant, String classeId);
+
+  Cours getById(String id);
 }

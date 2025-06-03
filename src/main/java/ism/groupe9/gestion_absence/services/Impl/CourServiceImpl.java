@@ -97,4 +97,10 @@ public class CourServiceImpl implements CourService {
     }
   }
 
+  @Override
+  public Cours getById(String id) {
+    return courRepository.findById(id).orElse(null);
+
+  }
+
 }
