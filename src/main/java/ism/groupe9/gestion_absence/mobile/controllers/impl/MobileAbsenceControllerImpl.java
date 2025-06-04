@@ -1,5 +1,6 @@
 package ism.groupe9.gestion_absence.mobile.controllers.impl;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,9 +54,13 @@ public class MobileAbsenceControllerImpl implements MobileAbsenceController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
       }
       List<Absence> existing = absenceService.getByEtudiantId(absenceRequest.getEtudiantId());
-      boolean absenceExists = existing.stream()
-          .anyMatch(a -> a.getDate().toLocalDate().equals(absenceRequest.getDate().toLocalDate())
+      LocalDate today = LocalDate.now();
+      boolean isToday = absenceRequest.getDate().toLocalDate().equals(today);
+
+      boolean absenceExists = isToday && existing.stream()
+          .anyMatch(a -> a.getDate().toLocalDate().equals(today)
               && Objects.equals(a.getCourId(), absenceRequest.getCourId()));
+
       if (absenceExists) {
         response.put("message", "Cette absence existe déjà.");
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
