@@ -10,6 +10,7 @@ import lombok.Setter;
 
 @AllArgsConstructor
 public class LoginResponse {
+  private String id;
   private String token;
   private String email;
   private String matricule;

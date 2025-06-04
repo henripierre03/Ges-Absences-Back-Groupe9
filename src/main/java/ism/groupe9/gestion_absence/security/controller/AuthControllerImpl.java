@@ -46,6 +46,7 @@ public class AuthControllerImpl implements AuthController {
     String matricule = user instanceof Etudiant etudiant ? etudiant.getMatricule() : null;
 
     return new ResponseEntity<>(RestResponse.response(HttpStatus.OK, new LoginResponse(
+        user.getId(),
         token,
         user.getEmail(),
         matricule,
