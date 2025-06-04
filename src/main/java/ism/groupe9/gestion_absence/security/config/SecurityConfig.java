@@ -38,10 +38,10 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/",
-                "/api/qrcode/**",
+                // "/api/qrcode/**",
                 "/api/auth/**",
                 "/api/mobile/**",
-                "/api/web/**",
+                // "/api/web/**",
                 "/docs/**",
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
