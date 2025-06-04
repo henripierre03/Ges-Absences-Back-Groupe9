@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ism.groupe9.gestion_absence.data.entities.Justification;
 import ism.groupe9.gestion_absence.services.JustificationService;
 import ism.groupe9.gestion_absence.web.controllers.JustificationController;
+import ism.groupe9.gestion_absence.web.dto.request.JustificationUpdateRequest;
 import ism.groupe9.gestion_absence.web.dto.response.RestResponse;
+import ism.groupe9.gestion_absence.web.mappers.JustificationMapper;
 import ism.groupe9.gestion_absence.web.mappers.JustificationMapperManuelle;
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class JustificationControllerImpl implements JustificationController {
   private final JustificationMapperManuelle justificationMapper;
   private final JustificationService justificationService;
+  private final JustificationMapper justificationMapper2;
 
   @Override
   public ResponseEntity<Map<String, Object>> getAll() {
@@ -41,7 +44,15 @@ public class JustificationControllerImpl implements JustificationController {
   }
 
   @Override
-  public ResponseEntity<Map<String, Object>> validationJustification(String id, Justification justification) {
-    throw new UnsupportedOperationException("Unimplemented method 'validationJustification'");
+  public ResponseEntity<Map<String, Object>> validationJustification(String id, JustificationUpdateRequest justification) {
+    Justification updatedJustification = justificationService.update(id, justification);
+    if (updatedJustification == null) {
+      return new ResponseEntity<>(RestResponse.response(HttpStatus.NOT_FOUND, "Justification introuvable", "string"),
+          HttpStatus.NOT_FOUND);
+    }
+
+    return new ResponseEntity<>(RestResponse.response(HttpStatus.OK,
+        justificationMapper2.toJustificationSimpleResponse(updatedJustification), "JustificationResponse"),
+        HttpStatus.OK);
   }
 }

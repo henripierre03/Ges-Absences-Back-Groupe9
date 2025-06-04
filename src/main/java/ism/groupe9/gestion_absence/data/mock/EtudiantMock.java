@@ -98,9 +98,13 @@ public class EtudiantMock implements CommandLineRunner {
               justification.setMessage("Justification " + j + " for Etudiant " + i);
               justification.setJustificatifs(null);
               justification.setDate(LocalDateTime.now());
-              justification.setValidation(true);
+              justification.setValidation(false);
               justification.setEtudiantId(savedEtudiant.getId());
               justification.setAbsenceId(savedAbsence.getId());
+              List<String> justificatifs = new ArrayList<>();
+              justificatifs.add("https://www.lettre-utile.fr/wp-content/uploads/2017/08/excuses-absence-travail.gif");
+              justificatifs.add("https://www.lettre-utile.fr/wp-content/uploads/2017/08/excuses-absence-travail.gif");
+              justification.setJustificatifs(justificatifs);
 
               Justification savedJustification = justificationRepository.save(justification);
               savedAbsence.setJustificationId(savedJustification.getId());
