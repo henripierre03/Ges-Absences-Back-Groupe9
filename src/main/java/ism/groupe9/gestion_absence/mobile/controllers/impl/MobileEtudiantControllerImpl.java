@@ -65,6 +65,12 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
           RestResponse.response(HttpStatus.NOT_FOUND, "Étudiant non trouvé", "string"),
           HttpStatus.NOT_FOUND);
     }
+    if (!etudiant.isArePayed()) {
+      return new ResponseEntity<>(
+          RestResponse.response(HttpStatus.BAD_REQUEST, "Étudiant n'as pas encore payé pour ce mois", "string"),
+          HttpStatus.BAD_REQUEST);
+      
+    }
     DetailCour prochainCours = etudiantService.getProchainCoursAujourdHui(request.getMatricule());
 
     boolean dejaPointe = absenceService.getByEtudiantId(etudiant.getId()).stream()
@@ -83,11 +89,8 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
     absence.setCourId(prochainCours.getId());
 
     var heureDebut = prochainCours.getHeureDebut();
-    // var heureFin = prochainCours.getHeureFin();
     var minutesRetard = calculerMinutesRetard(heureDebut, LocalTime.now());
     absence.setTypeAbsence(determinerTypeAbsence(minutesRetard));
-
-    // absence.setTypeAbsence(TypeAbsence.PRESENCE);
 
     var savedAbsence = absenceService.save(absence);
 

@@ -18,8 +18,8 @@ public class AbsenceCheck {
   private final CourService courService;
   private final ClasseRepository classeRepository;
 
-  // Exécute toutes les 5 minutes (300000 ms)
-  @Scheduled(fixedRate = 300000)
+  // Exécute tous les jours à 22h00
+  @Scheduled(cron = "0 0 22 * * ?")
   public void checkAbsences() {
     LocalDateTime maintenant = LocalDateTime.now();
     List<Classe> classes = classeRepository.findAll();
