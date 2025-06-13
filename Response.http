@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "etudiant1@example.com",
+    "email": "etudiant1",
     "password": "password1"
 }
 
@@ -63,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 POST http://localhost:8080/api/mobile/etudiant/pointage
 Accept: application/json
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDEiLCJpYXQiOjE3NDk4MzM1MjIsImV4cCI6MTc0OTkxOTkyMn0.EzpmmQtU5U84mNBSb-3x6X1xNitde_pW6n6N5HM1Qwo
 
 {
   "matricule": "MATRICULE1",

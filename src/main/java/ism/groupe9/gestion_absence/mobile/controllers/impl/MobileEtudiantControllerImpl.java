@@ -72,6 +72,11 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
       
     }
     DetailCour prochainCours = etudiantService.getProchainCoursAujourdHui(request.getMatricule());
+    if(prochainCours == null) {
+      return new ResponseEntity<>(
+          RestResponse.response(HttpStatus.BAD_REQUEST, "Étudiant n'a pas de cours aujourd'hui", "string"),
+          HttpStatus.BAD_REQUEST);
+    }
 
     boolean dejaPointe = absenceService.getByEtudiantId(etudiant.getId()).stream()
         .anyMatch(a -> a.getDate().equals(prochainCours.getDate()) && a.getTypeAbsence() == TypeAbsence.PRESENCE);
