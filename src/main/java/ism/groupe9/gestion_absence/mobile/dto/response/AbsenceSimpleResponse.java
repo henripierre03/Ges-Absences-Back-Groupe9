@@ -15,4 +15,6 @@ public class AbsenceSimpleResponse {
   private Date date;
   private TypeAbsence typeAbsence;
   private String courId;
+  private String justificationId;
+  private boolean hasJustification;
 }
