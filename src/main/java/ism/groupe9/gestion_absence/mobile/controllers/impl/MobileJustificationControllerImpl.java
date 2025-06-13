@@ -52,10 +52,18 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
         return new ResponseEntity<>(RestResponse.response(HttpStatus.NOT_FOUND, "Absence non trouvée", "string"),
             HttpStatus.NOT_FOUND);
       }
+
       if (absence.getTypeAbsence() == TypeAbsence.PRESENCE || absence.getTypeAbsence() == TypeAbsence.RETARD) {
         return new ResponseEntity<>(
             RestResponse.response(HttpStatus.BAD_REQUEST, "Cette absence ne peut pas avoir de justification", "string"),
             HttpStatus.BAD_REQUEST);
+      }
+
+      // Vérifier si une justification existe déjà
+      if (absence.getJustificationId() != null && !absence.getJustificationId().isEmpty()) {
+        return new ResponseEntity<>(
+            RestResponse.response(HttpStatus.CONFLICT, "Une justification existe déjà pour cette absence", "string"),
+            HttpStatus.CONFLICT);
       }
 
       // 1. Upload des fichiers sur Cloudinary
@@ -72,6 +80,11 @@ public class MobileJustificationControllerImpl implements MobileJustificationCon
 
       // 3. Sauvegarder la justification
       var savedJustification = justificationService.create(justification);
+
+      // 4. IMPORTANT: Mettre à jour l'absence avec l'ID de la justification
+      absence.setJustificationId(savedJustification.getId());
+      absence.setHasJustification(true);
+      absenceService.update(absence.getId(), absence);
 
       return new ResponseEntity<>(
           RestResponse.response(HttpStatus.CREATED,

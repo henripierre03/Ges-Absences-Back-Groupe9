@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.google.zxing.NotFoundException;
+
 import ism.groupe9.gestion_absence.data.entities.Absence;
 import ism.groupe9.gestion_absence.data.repositories.AbsenceRepository;
 import ism.groupe9.gestion_absence.services.AbsenceService;
@@ -43,6 +45,23 @@ public class AbsenceServiceImpl implements AbsenceService {
   @Override
   public List<Absence> getByEtudiantId(String id) {
     return absenceRepository.findByEtudiantId(id);
+  }
+
+  @Override
+  public Absence update(String id, Absence absence) {
+    return absenceRepository.findById(id)
+        .map(existingAbsence -> {
+          existingAbsence.setDate(absence.getDate());
+          existingAbsence.setCourId(absence.getCourId());
+          existingAbsence.setEtudiantId(absence.getEtudiantId());
+          existingAbsence.setVigileId(absence.getVigileId());
+          existingAbsence.setTypeAbsence(absence.getTypeAbsence());
+          existingAbsence.setHasJustification(absence.isHasJustification());
+          existingAbsence.setJustificationId(absence.getJustificationId());
+
+          return absenceRepository.save(existingAbsence);
+        })
+        .orElseThrow(() -> new RuntimeException("Absence not found with id: " + id));
   }
 
 }
