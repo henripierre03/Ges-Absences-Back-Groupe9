@@ -113,7 +113,7 @@ public class EtudiantServiceImpl implements EtudiantService {
         }
     }
     if (coursValides.isEmpty()) {
-        throw new RuntimeException("Aucun cours à venir aujourd'hui pour cette classe.");
+        return null;
     }
     
     // Trier les cours par heure
