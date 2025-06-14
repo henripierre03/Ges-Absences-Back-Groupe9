@@ -73,7 +73,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDEiLCJpYXQiOjE3N
 
 ###
 
-GET http://localhost:8080/api/web/absence
+GET http://localhost:8080/api/web/absence?page=0&size=8
 # Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NDg2ODgyMDksImV4cCI6MTc0ODc3NDYwOX0.chePoytDpG-qaZ-xZ-GwJ7Bgrpgd4wUAdJEquDWO5A8
 
 ###

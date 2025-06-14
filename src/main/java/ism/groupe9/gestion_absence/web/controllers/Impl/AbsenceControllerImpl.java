@@ -2,6 +2,8 @@ package ism.groupe9.gestion_absence.web.controllers.Impl;
 
 import java.util.Map;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,14 +25,16 @@ public class AbsenceControllerImpl implements AbsenceController {
   private final AbsenceService absenceService;
 
   @Override
-  public ResponseEntity<Map<String, Object>> getAll() {
-    var absences = absenceService.getAll();
+  public ResponseEntity<Map<String, Object>> getAll(int page, int size) {
+    Pageable pageable = PageRequest.of(page, size);
+    var absences = absenceService.getAll(pageable);
     var absenceResponse = absences.stream()
         .map(absenceMapper::toAbsenceAndEtudiantResponse)
         .toList();
-
+    var totalPage = absences.getTotalPages();
     return new ResponseEntity<>(
-        RestResponse.response(HttpStatus.OK, absenceResponse, "absenceAndJustificationList"),
+        RestResponse.responsePaginate(HttpStatus.OK, absenceResponse, "absenceAndJustificationList", new int[totalPage],
+            absences.getNumber(), totalPage, absences.getTotalElements(), absences.isFirst(), absences.isLast()),
         HttpStatus.OK);
   }
 

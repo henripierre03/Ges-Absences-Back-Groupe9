@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,7 +21,10 @@ public interface AbsenceController {
   @Operation(summary = "Recuperer toutes les absences", description = "Cette méthode permet de récupérer la liste de toutes les absences.")
   @ApiResponse(responseCode = "200", description = "Liste des absences récupérée avec succès.")
   @ApiResponse(responseCode = "404", description = "Aucune absence trouvée.")
-  ResponseEntity<Map<String, Object>> getAll();
+  ResponseEntity<Map<String, Object>> getAll(
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "8") int size
+  );
 
   @PostMapping("")
   @Operation(summary = "Créer une nouvelle absence", description = "Cette méthode permet de créer une nouvelle absence.")

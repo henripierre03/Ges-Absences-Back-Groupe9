@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import ism.groupe9.gestion_absence.data.entities.Absence;
 public interface AbsenceRepository extends MongoRepository<Absence, String> {
 
+
   List<Absence> findByEtudiantIdAndDate(String matricule, LocalDate date);
 
   List<Absence> findByVigileId(String vigileId);
