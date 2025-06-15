@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import ism.groupe9.gestion_absence.data.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -47,6 +48,9 @@ public class SecurityConfig {
                 "/v3/api-docs/**",
                 "/error")
             .permitAll()
+            .requestMatchers("/api/web/**").hasRole(UserRole.ADMIN.name())
+            .requestMatchers("/api/mobile/**")
+            .hasAnyRole(UserRole.VIGILE.name(), UserRole.ETUDIANT.name())
             .anyRequest().authenticated())
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
