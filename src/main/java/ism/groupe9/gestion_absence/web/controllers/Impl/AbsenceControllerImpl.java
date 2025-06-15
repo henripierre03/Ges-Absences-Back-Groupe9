@@ -39,6 +39,17 @@ public class AbsenceControllerImpl implements AbsenceController {
   }
 
   @Override
+  public ResponseEntity<Map<String, Object>> getAllWithoutPaginate() {
+    var absences = absenceService.getAll();
+    var absenceResponse = absences.stream()
+        .map(absenceMapper::toAbsenceAndEtudiantResponse)
+        .toList();
+    return new ResponseEntity<>(
+        RestResponse.response(HttpStatus.OK, absenceResponse, "absenceAndJustificationList"),
+        HttpStatus.OK);
+  }
+
+  @Override
   public ResponseEntity<Map<String, Object>> create(Absence absenceRequest) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'create'");

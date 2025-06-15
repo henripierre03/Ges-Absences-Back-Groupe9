@@ -26,6 +26,12 @@ public interface AbsenceController {
     @RequestParam(defaultValue = "8") int size
   );
 
+  @GetMapping("/all")
+  @Operation(summary = "Recuperer toutes les absences", description = "Cette méthode permet de récupérer la liste de toutes les absences sans la pagination .")
+  @ApiResponse(responseCode = "200", description = "Liste des absences récupérée avec succès.")
+  @ApiResponse(responseCode = "404", description = "Aucune absence trouvée.")
+  ResponseEntity<Map<String, Object>> getAllWithoutPaginate();
+
   @PostMapping("")
   @Operation(summary = "Créer une nouvelle absence", description = "Cette méthode permet de créer une nouvelle absence.")
   @ApiResponse(responseCode = "201", description = "Absence créée avec succès.")
