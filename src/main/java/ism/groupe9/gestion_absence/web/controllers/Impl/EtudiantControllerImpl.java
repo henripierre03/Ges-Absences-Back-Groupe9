@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = { "http://localhost:4200", "https://gestion-absences-one.vercel.app" })
 public class EtudiantControllerImpl implements EtudiantController {
 
   private final EtudiantService etudiantService;

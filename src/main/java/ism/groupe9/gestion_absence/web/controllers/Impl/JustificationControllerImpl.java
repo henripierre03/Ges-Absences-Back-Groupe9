@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = { "http://localhost:4200", "https://gestion-absences-one.vercel.app" })
 public class JustificationControllerImpl implements JustificationController {
   private final JustificationMapperManuelle justificationMapper;
   private final JustificationService justificationService;

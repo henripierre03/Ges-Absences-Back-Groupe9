@@ -17,7 +17,7 @@ import ism.groupe9.gestion_absence.web.mappers.AbsenceMapperManual;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = { "http://localhost:4200", "https://gestion-absences-one.vercel.app" })
 @RequiredArgsConstructor
 public class AbsenceControllerImpl implements AbsenceController {
 
