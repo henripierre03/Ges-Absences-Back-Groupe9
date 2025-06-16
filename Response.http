@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "vigile1@example.com",
+    "email": "etudiant1",
     "password": "password1"
 }
 
@@ -63,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDFAZXhhbXBsZS5jb
 POST http://localhost:8080/api/mobile/etudiant/pointage
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWdpbGUxQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUwMDMxOTU3LCJleHAiOjE3NTAxMTgzNTd9.HGsWzbbQU7jQP3uFs0XJa5m7ZcJ4P7t2ikZ5Kali_nc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDEiLCJpYXQiOjE3NTAwNzk1NjEsImV4cCI6MTc1MDE2NTk2MX0.x63kagze0S8vnEMvWVF-MOdi8o8HQG023kwdrnBJgL4
 
 {
   "matricule": "MATRICULE2",
@@ -121,4 +121,25 @@ Content-Type: application/json
   
   "id": "683f5ad2d599371876374034",
   "validation": false
+}
+
+###
+
+POST http://localhost:8080/api/mobile/cours
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldHVkaWFudDEiLCJpYXQiOjE3NTAwNzk1NjEsImV4cCI6MTc1MDE2NTk2MX0.x63kagze0S8vnEMvWVF-MOdi8o8HQG023kwdrnBJgL4
+
+{
+    "module": "JAVA",
+    "salleId": "684f5b0b2abd2032d84cd830",
+    "date": "2025-06-16T14:00:00",
+    "detailCours": [
+        {
+            "date": "2025-06-16T14:00:00",
+            "heureDebut": "14:00:00",
+            "heureFin": "16:00:00",
+            "classeId": "684f5b0b2abd2032d84cd827"
+        }
+    ]
 }

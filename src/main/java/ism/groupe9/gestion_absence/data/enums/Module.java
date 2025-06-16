@@ -11,5 +11,6 @@ public enum Module {
   LITTERATURE,
   PHILOSOPHIE,
   ECONOMIE,
+  JAVA,
 
 }
