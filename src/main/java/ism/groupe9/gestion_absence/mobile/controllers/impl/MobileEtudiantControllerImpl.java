@@ -79,7 +79,7 @@ public class MobileEtudiantControllerImpl implements MobileEtudiantController {
     }
 
     boolean dejaPointe = absenceService.getByEtudiantId(etudiant.getId()).stream()
-        .anyMatch(a -> a.getDate().equals(prochainCours.getDate()) && a.getTypeAbsence() == TypeAbsence.PRESENCE);
+        .anyMatch(a -> a.getDate().equals(prochainCours.getDate()) && (a.getTypeAbsence() == TypeAbsence.PRESENCE || a.getTypeAbsence() == TypeAbsence.RETARD));
 
     if (dejaPointe) {
       return new ResponseEntity<>(
