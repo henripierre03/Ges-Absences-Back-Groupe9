@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 // @Component
 @RequiredArgsConstructor
-// @Order(4)
+// @Order(3)
 public class DetailCourMock implements CommandLineRunner {
 
   private final CourRepository courRepository;
@@ -37,7 +37,7 @@ public class DetailCourMock implements CommandLineRunner {
       // Créer 3 détails de cours pour chaque cours
       for (int i = 0; i < 3; i++) {
         DetailCour detail = new DetailCour();
-        detail.setDate(LocalDateTime.now().plusDays(i));
+        detail.setDate(LocalDateTime.of(2025, 06, 16, 8, 0));
         detail.setHeureDebut(LocalTime.of(8, 0));
         detail.setHeureFin(LocalTime.of(10, 0));
         detail.setCourId(c.getId());

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +30,7 @@ import ism.groupe9.gestion_absence.data.repositories.VigileRepository;
 import lombok.RequiredArgsConstructor;
 
 // @Component
-// @Order(5)
+// @Order(4)
 @RequiredArgsConstructor
 public class EtudiantMock implements CommandLineRunner {
 

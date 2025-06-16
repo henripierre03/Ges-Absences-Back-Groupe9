@@ -103,12 +103,21 @@ public class EtudiantServiceImpl implements EtudiantService {
 
     for (Cours cours : allCours) {
       for (DetailCour detailCours : cours.getDetailCours()) {
+        // if (detailCours.getDate().toLocalDate().equals(aujourdhui) &&
+        // detailCours.getClasseId().equals(etudiant.getClasseId()) &&
+        // detailCours.getDate().isAfter(maintenant)
+        // ||
+        // (!detailCours.getDate().isAfter(maintenant)
+        // && detailCours.getHeureFin().isAfter(maintenant.toLocalTime())
+        // )) {
+
         if (detailCours.getDate().toLocalDate().equals(aujourdhui) &&
             detailCours.getClasseId().equals(etudiant.getClasseId()) &&
-            detailCours.getDate().isAfter(maintenant)
-            ||
-            (!detailCours.getDate().isAfter(maintenant)
-                && detailCours.getHeureFin().isAfter(maintenant.toLocalTime())
+            (detailCours.getDate().isAfter(maintenant) ||
+                (detailCours.getDate().isBefore(maintenant) &&
+                    detailCours.getHeureFin().isAfter(maintenant.toLocalTime()))
+                ||
+                detailCours.getDate().isEqual(maintenant)
             )) {
 
           coursValides.add(detailCours);

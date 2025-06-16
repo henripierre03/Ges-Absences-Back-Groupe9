@@ -1,6 +1,7 @@
 package ism.groupe9.gestion_absence.data.mock;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import ism.groupe9.gestion_absence.data.repositories.AdminRepository;
 import lombok.RequiredArgsConstructor;
 
 // @Component
+// @Order(1)
 @RequiredArgsConstructor
 public class AdminMock implements CommandLineRunner {
 
